@@ -85,8 +85,25 @@
                         <span asp-validation-for="Message" class="text-red-400 text-sm"></span>
                     </div>
 
+                    <!-- Terms and Privacy Checkbox -->
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0 mt-1">
+                            <input asp-for="AcceptTerms" type="checkbox" id="AcceptTerms"
+                                   class="w-5 h-5 rounded border-2 border-white/20 bg-transparent checked:bg-primary-blue checked:border-primary-blue focus:ring-2 focus:ring-primary-blue/50 transition-all duration-300" />
+                        </div>
+                        <div class="flex-grow">
+                            <label for="AcceptTerms" class="text-sm text-gray-300 cursor-pointer">
+                                I agree to the 
+                                <a asp-controller="Home" asp-action="Terms" class="text-primary-blue hover:text-primary-purple underline transition-colors duration-300" target="_blank">Terms of Service</a> 
+                                and 
+                                <a asp-controller="Home" asp-action="Privacy" class="text-primary-blue hover:text-primary-purple underline transition-colors duration-300" target="_blank">Privacy Policy</a> *
+                            </label>
+                            <span asp-validation-for="AcceptTerms" class="block text-red-400 text-sm mt-1"></span>
+                        </div>
+                    </div>
+
                     <button type="submit" 
-                            class="w-full bg-gradient-to-r from-primary-blue to-primary-purple hover:from-primary-purple hover:to-primary-blue px-8 py-4 rounded-lg text-white font-semibold transition-all duration-300 sharp-shadow transform hover:scale-105">
+                            class="w-full bg-gradient-to-r from-primary-blue to-primary-purple hover:from-primary-purple hover:to-primary-blue px-8 py-4 rounded-lg text-white font-semibold transition-all duration-300 sharp-shadow transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                         <i class="fas fa-paper-plane mr-2"></i>
                         Send Message
                     </button>

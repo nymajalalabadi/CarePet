@@ -21,5 +21,9 @@ namespace CarePet.Models
 
         public string Subject { get; set; } = string.Empty;
         public DateTime SubmittedAt { get; set; } = DateTime.Now;
+
+        [Required(ErrorMessage = "You must accept the Terms and Privacy Policy")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You must accept the Terms and Privacy Policy")]
+        public bool AcceptTerms { get; set; }
     }
 } 
