@@ -66,15 +66,151 @@
         </div>
 
         <!-- Mobile Navigation -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 glass-dark border-t border-white/10">
-                <a asp-controller="Home" asp-action="Index" class="mobile-nav-link">Home</a>
-                <a asp-controller="Home" asp-action="Pets" class="mobile-nav-link">Our Pets</a>
-                <a asp-controller="Home" asp-action="Services" class="mobile-nav-link">Services</a>
-                <a asp-controller="Home" asp-action="About" class="mobile-nav-link">About</a>
-                <a asp-controller="Home" asp-action="Contact" class="mobile-nav-link">Contact</a>
-            </div>
-        </div>
+                 <!-- Enhanced Mobile Menu Overlay -->
+         <div class="mobile-overlay fixed inset-0 bg-black/80 backdrop-blur-md z-[9998] opacity-0 invisible transition-all duration-300 md:hidden" id="mobile-overlay"></div>
+         
+         <!-- Enhanced Mobile Menu -->
+         <div class="mobile-menu fixed top-0 left-0 h-screen w-80 max-w-[90vw] glass-dark border-r border-white/20 z-[9999] transform -translate-x-full transition-all duration-300 ease-out shadow-2xl md:hidden invisible" id="mobile-menu">
+             <!-- Menu Header -->
+             <div class="flex items-center justify-between p-6 border-b border-white/20 bg-gradient-to-r from-primary-blue/20 to-primary-purple/20">
+                 <div class="flex items-center space-x-3">
+                     <div class="w-10 h-10 bg-gradient-to-r from-primary-blue to-primary-purple rounded-xl flex items-center justify-center shadow-lg">
+                         <i class="fas fa-paw text-white text-lg"></i>
+                     </div>
+                     <div>
+                         <h2 class="text-lg font-bold text-white">CarePet</h2>
+                         <p class="text-xs text-gray-300">Pet Care & Adoption</p>
+                     </div>
+                 </div>
+                 <button class="mobile-close-btn p-2 rounded-xl glass hover:bg-white/10 transition-all duration-200 group" id="mobile-close">
+                     <i class="fas fa-times text-white text-xl group-hover:rotate-90 transition-transform duration-200"></i>
+                 </button>
+             </div>
+             
+             <!-- Menu Content -->
+             <div class="flex flex-col h-full overflow-y-auto custom-scrollbar overscroll-contain">
+                 <!-- Navigation Links -->
+                 <nav class="flex-1 p-4 space-y-3">
+                     <a asp-controller="Home" asp-action="Index" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-blue/20 hover:to-primary-purple/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-home text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Home</h3>
+                             <p class="text-gray-400 text-sm">Welcome to CarePet</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-blue group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+                     
+                     <a asp-controller="Home" asp-action="Pets" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-green/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-heart text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Our Pets</h3>
+                             <p class="text-gray-400 text-sm">Find your life companion</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-green group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+                     
+                     <a asp-controller="Home" asp-action="Services" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-pink/20 hover:to-primary-orange/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-spa text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Services</h3>
+                             <p class="text-gray-400 text-sm">Pet care services</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-pink group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+                     
+                     <a asp-controller="Home" asp-action="About" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-yellow/20 hover:to-primary-green/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-info-circle text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">About Us</h3>
+                             <p class="text-gray-400 text-sm">Our story & mission</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-yellow group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+                     
+                     <a asp-controller="Home" asp-action="Contact" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-pink/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-pink rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-envelope text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Contact Us</h3>
+                             <p class="text-gray-400 text-sm">Get in touch</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+                 </nav>
+                 
+                 <!-- Quick Actions Section -->
+                 <div class="p-4 border-t border-white/10">
+                     <h3 class="text-white font-semibold mb-4 flex items-center text-lg">
+                         <i class="fas fa-bolt text-primary-yellow mr-2"></i>
+                         Quick Actions
+                     </h3>
+                     <div class="grid grid-cols-2 gap-3">
+                         <a asp-controller="Home" asp-action="Pets" class="quick-action glass-dark rounded-2xl p-4 text-center hover:bg-primary-blue/10 transition-all duration-300 group transform hover:scale-105 active:scale-95">
+                             <i class="fas fa-search text-primary-blue text-3xl mb-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300"></i>
+                             <p class="text-white text-sm font-medium">Find Pets</p>
+                         </a>
+                         <a asp-controller="Home" asp-action="Contact" class="quick-action glass-dark rounded-2xl p-4 text-center hover:bg-primary-green/10 transition-all duration-300 group transform hover:scale-105 active:scale-95">
+                             <i class="fas fa-phone text-primary-green text-3xl mb-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300"></i>
+                             <p class="text-white text-sm font-medium">Call Us</p>
+                         </a>
+                     </div>
+                 </div>
+                 
+                 <!-- Footer Section -->
+                 <div class="p-4 border-t border-white/10 bg-gradient-to-r from-black/20 to-gray-900/30 rounded-t-3xl">
+                     <!-- Contact Info -->
+                     <div class="mb-4 space-y-3">
+                         <div class="flex items-center">
+                             <div class="w-8 h-8 bg-gradient-to-r from-primary-green to-green-500 rounded-lg flex items-center justify-center mr-3">
+                                 <i class="fas fa-phone text-white text-sm"></i>
+                             </div>
+                             <span class="text-white text-sm font-medium">(555) 123-4567</span>
+                         </div>
+                         <div class="flex items-center">
+                             <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-blue-500 rounded-lg flex items-center justify-center mr-3">
+                                 <i class="fas fa-envelope text-white text-sm"></i>
+                             </div>
+                             <span class="text-white text-sm font-medium">info@carepet.com</span>
+                         </div>
+                         <div class="flex items-center">
+                             <div class="w-8 h-8 bg-gradient-to-r from-primary-yellow to-yellow-500 rounded-lg flex items-center justify-center mr-3">
+                                 <i class="fas fa-clock text-white text-sm"></i>
+                             </div>
+                             <span class="text-white text-sm font-medium">Open 24/7</span>
+                         </div>
+                     </div>
+                     
+                     <!-- Social Links -->
+                     <div class="flex justify-center space-x-3 mb-4">
+                         <a href="#" class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-lg">
+                             <i class="fab fa-facebook-f text-white text-sm"></i>
+                         </a>
+                         <a href="#" class="w-10 h-10 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl flex items-center justify-center hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-lg">
+                             <i class="fab fa-instagram text-white text-sm"></i>
+                         </a>
+                         <a href="#" class="w-10 h-10 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl flex items-center justify-center hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-lg">
+                             <i class="fab fa-twitter text-white text-sm"></i>
+                         </a>
+                         <a href="#" class="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center hover:scale-110 hover:rotate-6 transition-all duration-300 shadow-lg">
+                             <i class="fab fa-whatsapp text-white text-sm"></i>
+                         </a>
+                     </div>
+                     
+                     <div class="text-center">
+                         <p class="text-gray-400 text-xs">&copy; 2024 CarePet. All rights reserved.</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
     </nav>
 
     <!-- Main Content -->
@@ -143,7 +279,7 @@
 
             <div class="border-t border-white/10 mt-8 pt-8 text-center">
                 <p class="text-gray-400">
-                    &copy; @DateTime.Now.Year CarePet. All rights reserved. Made with ❤️ for pet lovers.
+                    &copy; @DateTime.Now.Year CarePet. All rights Doorzy Tech. Made with ❤️ for pet lovers.
                 </p>
             </div>
         </div>
@@ -152,11 +288,250 @@
     <!-- Scripts -->
     <script src="~/js/animated-gradient-background.js" asp-append-version="true"></script>
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+                 // Enhanced Mobile Menu System
+         document.addEventListener('DOMContentLoaded', function() {
+             const mobileMenuButton = document.getElementById('mobile-menu-button');
+             const mobileMenu = document.getElementById('mobile-menu');
+             const mobileOverlay = document.getElementById('mobile-overlay');
+             const mobileClose = document.getElementById('mobile-close');
+             const body = document.body;
+             
+             let isMenuOpen = false;
+             let touchStartX = 0;
+             let touchCurrentX = 0;
+             let isDragging = false;
+             
+             // Ensure menu is hidden on page load
+             function initializeMenu() {
+                 if (mobileMenu) {
+                     mobileMenu.classList.add('-translate-x-full', 'invisible');
+                     mobileMenu.classList.remove('translate-x-0', 'visible');
+                 }
+                 if (mobileOverlay) {
+                     mobileOverlay.classList.add('opacity-0', 'invisible');
+                     mobileOverlay.classList.remove('opacity-100', 'visible');
+                 }
+                 isMenuOpen = false;
+             }
+             
+             // Initialize menu state
+             initializeMenu();
+             
+             // Open mobile menu with smooth animations
+             function openMobileMenu() {
+                 if (isMenuOpen || !mobileMenu || !mobileOverlay) return;
+                 
+                 isMenuOpen = true;
+                 
+                 // Show overlay with fade-in
+                 mobileOverlay.classList.remove('invisible', 'opacity-0');
+                 mobileOverlay.classList.add('visible', 'opacity-100');
+                 
+                 // Show menu with slide-in from left
+                 mobileMenu.classList.remove('-translate-x-full', 'invisible');
+                 mobileMenu.classList.add('translate-x-0', 'visible');
+                 
+                 // Prevent body scroll and save scroll position
+                 const scrollY = window.scrollY;
+                 body.style.position = 'fixed';
+                 body.style.top = `-${scrollY}px`;
+                 body.style.width = '100%';
+                 body.style.overflow = 'hidden';
+                 body.classList.add('mobile-menu-open');
+                 body.setAttribute('data-scroll-y', scrollY);
+                 
+                 // Animate menu items with stagger effect
+                 const menuItems = mobileMenu.querySelectorAll('.mobile-nav-item, .quick-action');
+                 menuItems.forEach((item, index) => {
+                     item.style.opacity = '0';
+                     item.style.transform = 'translateX(-30px)';
+                     setTimeout(() => {
+                         item.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                         item.style.opacity = '1';
+                         item.style.transform = 'translateX(0)';
+                     }, index * 80 + 150);
+                 });
+                 
+                 // Update button state
+                 mobileMenuButton.setAttribute('aria-expanded', 'true');
+                 mobileMenuButton.classList.add('menu-open');
+             }
+             
+             // Close mobile menu with animations
+             function closeMobileMenu() {
+                 if (!isMenuOpen || !mobileMenu || !mobileOverlay) return;
+                 
+                 isMenuOpen = false;
+                 
+                 // Hide overlay with fade-out
+                 mobileOverlay.classList.remove('opacity-100', 'visible');
+                 mobileOverlay.classList.add('opacity-0');
+                 setTimeout(() => {
+                     mobileOverlay.classList.add('invisible');
+                 }, 300);
+                 
+                 // Hide menu with slide-out to left
+                 mobileMenu.classList.remove('translate-x-0', 'visible');
+                 mobileMenu.classList.add('-translate-x-full');
+                 setTimeout(() => {
+                     mobileMenu.classList.add('invisible');
+                 }, 300);
+                 
+                 // Restore body scroll and position
+                 const scrollY = body.getAttribute('data-scroll-y');
+                 body.style.position = '';
+                 body.style.top = '';
+                 body.style.width = '';
+                 body.style.overflow = '';
+                 body.classList.remove('mobile-menu-open');
+                 if (scrollY) {
+                     window.scrollTo(0, parseInt(scrollY));
+                     body.removeAttribute('data-scroll-y');
+                 }
+                 
+                 // Reset menu items
+                 const menuItems = mobileMenu.querySelectorAll('.mobile-nav-item, .quick-action');
+                 menuItems.forEach(item => {
+                     item.style.transition = '';
+                     item.style.opacity = '';
+                     item.style.transform = '';
+                 });
+                 
+                 // Update button state
+                 mobileMenuButton.setAttribute('aria-expanded', 'false');
+                 mobileMenuButton.classList.remove('menu-open');
+             }
+             
+             // Toggle menu
+             function toggleMobileMenu() {
+                 if (isMenuOpen) {
+                     closeMobileMenu();
+                 } else {
+                     openMobileMenu();
+                 }
+             }
+             
+             // Event listeners
+             if (mobileMenuButton) {
+                 mobileMenuButton.addEventListener('click', toggleMobileMenu);
+             }
+             
+             if (mobileClose) {
+                 mobileClose.addEventListener('click', closeMobileMenu);
+             }
+             
+             if (mobileOverlay) {
+                 mobileOverlay.addEventListener('click', closeMobileMenu);
+             }
+             
+             // Close menu when clicking navigation links
+             const navLinks = mobileMenu.querySelectorAll('.mobile-nav-item, .quick-action');
+             navLinks.forEach(link => {
+                 link.addEventListener('click', (e) => {
+                     // Add ripple effect
+                     createRipple(e, link);
+                     
+                     // Close menu after short delay
+                     setTimeout(closeMobileMenu, 300);
+                 });
+             });
+             
+             // Keyboard support
+             document.addEventListener('keydown', function(e) {
+                 if (e.key === 'Escape' && isMenuOpen) {
+                     closeMobileMenu();
+                 }
+             });
+             
+             // Handle window resize - ensure menu is hidden on desktop
+             window.addEventListener('resize', function() {
+                 if (window.innerWidth >= 768) {
+                     // Force close menu on desktop sizes
+                     if (isMenuOpen) {
+                         closeMobileMenu();
+                     }
+                     // Ensure menu stays hidden on desktop
+                     initializeMenu();
+                 }
+             });
+             
+             // Advanced swipe to close functionality
+             mobileMenu.addEventListener('touchstart', function(e) {
+                 touchStartX = e.touches[0].clientX;
+                 isDragging = true;
+                 mobileMenu.style.transition = 'none';
+             }, { passive: true });
+             
+             mobileMenu.addEventListener('touchmove', function(e) {
+                 if (!isDragging) return;
+                 
+                 touchCurrentX = e.touches[0].clientX;
+                 const deltaX = touchCurrentX - touchStartX;
+                 
+                 if (deltaX < 0) { // Swiping left
+                     const progress = Math.min(Math.abs(deltaX) / 200, 1);
+                     const translateX = deltaX;
+                     const overlayOpacity = 1 - (progress * 0.7);
+                     
+                     mobileMenu.style.transform = `translateX(${translateX}px)`;
+                     mobileOverlay.style.opacity = overlayOpacity;
+                 }
+             }, { passive: true });
+             
+             mobileMenu.addEventListener('touchend', function(e) {
+                 if (!isDragging) return;
+                 isDragging = false;
+                 
+                 const deltaX = touchCurrentX - touchStartX;
+                 mobileMenu.style.transition = '';
+                 
+                 if (deltaX < -120) { // Swipe threshold (left)
+                     closeMobileMenu();
+                 } else {
+                     // Snap back
+                     mobileMenu.style.transform = '';
+                     mobileOverlay.style.opacity = '';
+                 }
+             }, { passive: true });
+             
+             // Enhanced ripple effect function
+             function createRipple(event, element) {
+                 const circle = document.createElement('span');
+                 const diameter = Math.max(element.clientWidth, element.clientHeight);
+                 const radius = diameter / 2;
+                 
+                 const rect = element.getBoundingClientRect();
+                 circle.style.width = circle.style.height = `${diameter}px`;
+                 circle.style.left = `${event.clientX - rect.left - radius}px`;
+                 circle.style.top = `${event.clientY - rect.top - radius}px`;
+                 circle.classList.add('ripple-effect');
+                 
+                 const existingRipple = element.querySelector('.ripple-effect');
+                 if (existingRipple) {
+                     existingRipple.remove();
+                 }
+                 
+                 element.appendChild(circle);
+                 
+                 setTimeout(() => {
+                     circle.remove();
+                 }, 800);
+             }
+             
+             // Parallax effect for menu items on scroll
+             const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
+             if (menuContent) {
+                 menuContent.addEventListener('scroll', function() {
+                     const scrollTop = this.scrollTop;
+                     const menuItems = this.querySelectorAll('.mobile-nav-item');
+                     
+                     menuItems.forEach((item, index) => {
+                         const offset = scrollTop * 0.1 * (index + 1);
+                         item.style.transform = `translateY(${offset}px)`;
+                     });
+                 });
+             }
+         });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -176,9 +551,287 @@
             @@apply text-gray-300 hover:text-white transition-colors duration-300 font-medium;
         }
         
-        .mobile-nav-link {
-            @@apply block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-all duration-300;
+                 /* Enhanced Mobile Menu Styles */
+         .mobile-menu {
+             backdrop-filter: blur(25px);
+             -webkit-backdrop-filter: blur(25px);
+             box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
+             will-change: transform;
+             min-height: 100vh;
+             min-height: 100dvh;
+             overscroll-behavior: contain;
+         }
+         
+         /* Ensure mobile menu starts hidden */
+         .mobile-menu.invisible {
+             visibility: hidden !important;
+             pointer-events: none !important;
+             transform: translateX(-100%) !important;
+         }
+         
+         .mobile-overlay.invisible {
+             visibility: hidden !important;
+             pointer-events: none !important;
+         }
+         
+         /* Enhanced glass effect for mobile menu */
+         .mobile-menu .glass-dark {
+             background: rgba(0, 0, 0, 0.4);
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+         }
+        
+                 .mobile-overlay {
+             backdrop-filter: blur(12px);
+             -webkit-backdrop-filter: blur(12px);
+             background: rgba(0, 0, 0, 0.8) !important;
+             position: fixed !important;
+             top: 0 !important;
+             left: 0 !important;
+             width: 100vw !important;
+             height: 100vh !important;
+             height: 100dvh !important;
+         }
+        
+        .mobile-nav-item {
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
         }
+        
+                 .mobile-nav-item::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+             transition: left 0.6s ease-in-out;
+         }
+         
+         .mobile-nav-item:hover::before {
+             left: 100%;
+         }
+        
+        .quick-action {
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+        
+        /* Enhanced Ripple Effect */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 40%, transparent 70%);
+            transform: scale(0);
+            animation: ripple-animation 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @@keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Hamburger Menu Animation */
+        .menu-open #mobile-menu-button {
+            transform: scale(0.95) rotate(90deg);
+        }
+        
+        #mobile-menu-button {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Scroll Lock */
+        .mobile-menu-open {
+            overflow: hidden !important;
+            height: 100vh;
+        }
+        
+                 /* Custom Scrollbar */
+         .custom-scrollbar::-webkit-scrollbar {
+             width: 6px;
+         }
+         
+         .custom-scrollbar::-webkit-scrollbar-track {
+             background: rgba(255, 255, 255, 0.1);
+             border-radius: 3px;
+             margin: 10px;
+         }
+         
+         .custom-scrollbar::-webkit-scrollbar-thumb {
+             background: linear-gradient(180deg, rgba(59, 130, 246, 0.8) 0%, rgba(147, 51, 234, 0.8) 100%);
+             border-radius: 3px;
+             transition: background 0.3s ease;
+         }
+         
+         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+             background: linear-gradient(180deg, rgba(59, 130, 246, 1) 0%, rgba(147, 51, 234, 1) 100%);
+         }
+         
+         /* Mobile menu specific overrides */
+         @@media (max-width: 767px) {
+             .mobile-menu {
+                 touch-action: pan-y;
+                 -webkit-overflow-scrolling: touch;
+             }
+             
+             .mobile-overlay {
+                 touch-action: none;
+             }
+         }
+        
+        /* Enhanced hover effects */
+        .mobile-nav-item:hover .w-12 {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .quick-action:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-close-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        .mobile-nav-item,
+        .quick-action,
+        .mobile-close-btn {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Icon animations */
+        .mobile-nav-item:hover i,
+        .quick-action:hover i {
+            transform: scale(1.2) rotate(5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Focus styles for accessibility */
+        .mobile-nav-item:focus,
+        .quick-action:focus,
+        .mobile-close-btn:focus {
+            outline: 3px solid rgba(59, 130, 246, 0.8);
+            outline-offset: 2px;
+            border-radius: 16px;
+        }
+        
+        /* Loading animations */
+        .mobile-nav-item {
+            animation-fill-mode: both;
+        }
+        
+        /* Glow effects */
+        .mobile-nav-item:hover {
+            box-shadow: 
+                0 0 20px rgba(59, 130, 246, 0.3),
+                0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .quick-action:hover {
+            box-shadow: 
+                0 0 25px rgba(16, 185, 129, 0.4),
+                0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Social icons hover effects */
+        .flex.justify-center a:hover {
+            box-shadow: 0 0 20px currentColor;
+        }
+        
+                 /* Mobile Menu Header Gradient */
+         .mobile-menu .bg-gradient-to-r {
+             background: linear-gradient(
+                 90deg,
+                 rgba(59, 130, 246, 0.2) 0%,
+                 rgba(147, 51, 234, 0.2) 50%,
+                 rgba(236, 72, 153, 0.2) 100%
+             );
+         }
+        
+        /* Enhanced glass effect */
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Micro interactions */
+        .mobile-nav-item:active {
+            transform: scale(0.98);
+        }
+        
+        .quick-action:active {
+            transform: scale(0.95);
+        }
+        
+        /* Gradient text effects */
+        .mobile-nav-item h3 {
+            background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        
+                 /* Performance optimizations */
+         .mobile-menu,
+         .mobile-overlay,
+         .mobile-nav-item,
+         .quick-action {
+             transform: translateZ(0);
+             backface-visibility: hidden;
+         }
+         
+         /* Force hide mobile menu on desktop */
+         @@media (min-width: 768px) {
+             .mobile-menu,
+             .mobile-overlay {
+                 display: none !important;
+                 visibility: hidden !important;
+                 opacity: 0 !important;
+                 pointer-events: none !important;
+             }
+         }
+         
+         /* Mobile only styles */
+         @@media (max-width: 767px) {
+             .mobile-menu {
+                 position: fixed !important;
+                 top: 0 !important;
+                 left: 0 !important;
+                 width: 80vw !important;
+                 max-width: 320px !important;
+                 height: 100vh !important;
+                 height: 100dvh !important;
+                 z-index: 9999 !important;
+             }
+             
+             .mobile-menu.invisible {
+                 transform: translateX(-100%) !important;
+             }
+             
+             .mobile-overlay {
+                 z-index: 9998 !important;
+             }
+             
+             /* Prevent body scroll when menu is open */
+             body.mobile-menu-open {
+                 overflow: hidden !important;
+                 position: fixed !important;
+                 width: 100% !important;
+                 height: 100% !important;
+             }
+         }
     </style>
 </body>
 </html>

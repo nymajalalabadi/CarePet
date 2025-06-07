@@ -97,13 +97,24 @@
                         <p class="text-gray-400 mb-6 line-clamp-3">@pet.Description</p>
                         
                         <div class="flex items-center gap-3">
-                            <button class="flex-1 glass px-4 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
-                                <i class="fas fa-heart mr-2"></i>
-                                Adopt @pet.Name
-                            </button>
-                            <button class="glass p-3 rounded-lg text-primary-pink hover:bg-primary-pink hover:text-white transition-all duration-300">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
+                            <a asp-controller="Home" asp-action="PetDetails" asp-route-id="@pet.Id" class="flex-1 glass px-4 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300 text-center">
+                                <i class="fas fa-eye mr-2"></i>
+                                View Details
+                            </a>
+                            @if (pet.IsAvailable)
+                            {
+                                <a asp-controller="Home" asp-action="Adopt" asp-route-petId="@pet.Id" class="bg-gradient-to-r from-primary-green to-primary-blue hover:from-primary-blue hover:to-primary-green px-4 py-3 rounded-lg text-white font-medium transition-all duration-300">
+                                    <i class="fas fa-heart mr-2"></i>
+                                    Adopt
+                                </a>
+                            }
+                            else
+                            {
+                                <button class="glass-dark px-4 py-3 rounded-lg text-gray-500 font-medium cursor-not-allowed" disabled>
+                                    <i class="fas fa-times mr-2"></i>
+                                    Adopted
+                                </button>
+                            }
                         </div>
                     </div>
                 </div>

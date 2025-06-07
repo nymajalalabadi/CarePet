@@ -19,8 +19,6 @@ D:\Project\Cursor\CarePet\CarePet\bin\Debug\net9.0\CarePet.pdb
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\scopedcss\bundle\CarePet.styles.css
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\scopedcss\projectbundle\CarePet.bundle.scp.css
-D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\3oxq84qpnr-kha24h6kkh.gz
-D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\8w78npzsm1-51lbu65h36.gz
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\le311lnyl9-b9sayid5wm.gz
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\wpdllscamq-61n19gt1b8.gz
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\gwdofbswac-9k4f1zxuua.gz
@@ -95,3 +93,6 @@ D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\refint\CarePet.dll
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\CarePet.pdb
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\CarePet.genruntimeconfig.cache
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\ref\CarePet.dll
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\CarePet.sourcelink.json
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\3oxq84qpnr-naz4ggpd42.gz
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\8w78npzsm1-s7nupen01z.gz

@@ -1,0 +1,321 @@
+@model CarePet.Models.AdoptionApplication
+@{
+    ViewData["Title"] = $"Adopt {ViewBag.Pet.Name}";
+    var pet = ViewBag.Pet as CarePet.Models.Pet;
+}
+
+<!-- Hero Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Back Button -->
+        <div class="mb-8">
+            <a asp-controller="Home" asp-action="PetDetails" asp-route-id="@pet?.Id" class="glass px-6 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to @pet?.Name's Details
+            </a>
+        </div>
+
+        <!-- Pet Info Header -->
+        <div class="glass-dark rounded-3xl p-8 mb-12">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-32 h-32 rounded-full overflow-hidden sharp-shadow">
+                    <img src="@pet?.ImageUrl" alt="@pet?.Name" class="w-full h-full object-cover" />
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Adopt <span class="gradient-text">@pet?.Name</span>
+                    </h1>
+                    <p class="text-xl text-gray-300">
+                        @pet?.Breed • @pet?.Age year@(pet?.Age != 1 ? "s" : "") old • @pet?.Gender
+                    </p>
+                    <p class="text-lg text-gray-400 mt-2">
+                        Complete the application below to give @pet?.Name a loving home!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Form -->
+        <div class="glass-dark rounded-3xl p-8 md:p-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Adoption <span class="gradient-text">Application</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Please fill out this comprehensive application to help us ensure @pet?.Name finds the perfect home.
+                </p>
+            </div>
+
+            <form asp-action="Adopt" method="post" class="space-y-8">
+                <input type="hidden" asp-for="PetId" value="@pet?.Id" />
+
+                <!-- Personal Information -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                        Personal Information
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label asp-for="FullName" class="block text-white font-semibold mb-2">Full Name *</label>
+                            <input asp-for="FullName" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="Enter your full name" />
+                            <span asp-validation-for="FullName" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Email" class="block text-white font-semibold mb-2">Email Address *</label>
+                            <input asp-for="Email" type="email" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="your@email.com" />
+                            <span asp-validation-for="Email" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Phone" class="block text-white font-semibold mb-2">Phone Number *</label>
+                            <input asp-for="Phone" type="tel" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="(555) 123-4567" />
+                            <span asp-validation-for="Phone" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Age" class="block text-white font-semibold mb-2">Age *</label>
+                            <input asp-for="Age" type="number" min="18" max="100" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="25" />
+                            <span asp-validation-for="Age" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Occupation" class="block text-white font-semibold mb-2">Occupation *</label>
+                            <input asp-for="Occupation" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="Software Developer" />
+                            <span asp-validation-for="Occupation" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address Information -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-home text-white text-sm"></i>
+                        </div>
+                        Address Information
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label asp-for="Address" class="block text-white font-semibold mb-2">Street Address *</label>
+                            <input asp-for="Address" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="123 Main Street" />
+                            <span asp-validation-for="Address" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="City" class="block text-white font-semibold mb-2">City *</label>
+                            <input asp-for="City" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="New York" />
+                            <span asp-validation-for="City" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="State" class="block text-white font-semibold mb-2">State *</label>
+                            <input asp-for="State" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="NY" />
+                            <span asp-validation-for="State" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="ZipCode" class="block text-white font-semibold mb-2">ZIP Code *</label>
+                            <input asp-for="ZipCode" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="10001" />
+                            <span asp-validation-for="ZipCode" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="HousingType" class="block text-white font-semibold mb-2">Housing Type *</label>
+                            <select asp-for="HousingType" class="w-full glass-input px-4 py-3 rounded-lg text-white">
+                                <option value="">Select housing type</option>
+                                <option value="House">House</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Condo">Condo</option>
+                                <option value="Townhouse">Townhouse</option>
+                            </select>
+                            <span asp-validation-for="HousingType" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="flex items-center text-white">
+                            <input asp-for="HasYard" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue" />
+                            <span class="font-semibold">I have a yard or outdoor space</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pet Experience -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-paw text-white text-sm"></i>
+                        </div>
+                        Pet Experience
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label asp-for="PetExperience" class="block text-white font-semibold mb-2">Previous Pet Experience *</label>
+                            <select asp-for="PetExperience" class="w-full glass-input px-4 py-3 rounded-lg text-white">
+                                <option value="">Select your experience level</option>
+                                <option value="No Experience">No Experience</option>
+                                <option value="Some Experience">Some Experience (1-2 pets)</option>
+                                <option value="Experienced">Experienced (3+ pets)</option>
+                                <option value="Very Experienced">Very Experienced (5+ pets or professional)</option>
+                            </select>
+                            <span asp-validation-for="PetExperience" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label class="flex items-center text-white mb-4">
+                                <input asp-for="HasOtherPets" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue" />
+                                <span class="font-semibold">I currently have other pets</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label asp-for="OtherPetsDetails" class="block text-white font-semibold mb-2">Other Pets Details</label>
+                            <textarea asp-for="OtherPetsDetails" rows="3" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="Describe your other pets (type, age, temperament)"></textarea>
+                            <span asp-validation-for="OtherPetsDetails" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Information -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-white text-sm"></i>
+                        </div>
+                        Family Information
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="flex items-center text-white mb-4">
+                                <input asp-for="HasChildren" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue" />
+                                <span class="font-semibold">I have children in my household</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label asp-for="ChildrenAges" class="block text-white font-semibold mb-2">Children's Ages</label>
+                            <input asp-for="ChildrenAges" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="e.g., 5, 8, 12 years old" />
+                            <span asp-validation-for="ChildrenAges" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adoption Details -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-purple to-primary-pink rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-heart text-white text-sm"></i>
+                        </div>
+                        Adoption Details
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label asp-for="AdoptionReason" class="block text-white font-semibold mb-2">Why do you want to adopt @pet?.Name? *</label>
+                            <textarea asp-for="AdoptionReason" rows="4" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="Please provide a detailed explanation (minimum 50 characters)"></textarea>
+                            <span asp-validation-for="AdoptionReason" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-primary-green rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-address-book text-white text-sm"></i>
+                        </div>
+                        References
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="flex items-center text-white mb-4">
+                                <input asp-for="VeterinarianReference" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue" />
+                                <span class="font-semibold">I have a veterinarian reference</span>
+                            </label>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label asp-for="VeterinarianName" class="block text-white font-semibold mb-2">Veterinarian Name</label>
+                                <input asp-for="VeterinarianName" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="Dr. Smith" />
+                                <span asp-validation-for="VeterinarianName" class="text-red-400 text-sm"></span>
+                            </div>
+
+                            <div>
+                                <label asp-for="VeterinarianPhone" class="block text-white font-semibold mb-2">Veterinarian Phone</label>
+                                <input asp-for="VeterinarianPhone" type="tel" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="(555) 123-4567" />
+                                <span asp-validation-for="VeterinarianPhone" class="text-red-400 text-sm"></span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label asp-for="EmergencyContactName" class="block text-white font-semibold mb-2">Emergency Contact Name *</label>
+                                <input asp-for="EmergencyContactName" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="John Doe" />
+                                <span asp-validation-for="EmergencyContactName" class="text-red-400 text-sm"></span>
+                            </div>
+
+                            <div>
+                                <label asp-for="EmergencyContactPhone" class="block text-white font-semibold mb-2">Emergency Contact Phone *</label>
+                                <input asp-for="EmergencyContactPhone" type="tel" class="w-full glass-input px-4 py-3 rounded-lg text-white placeholder-gray-400" placeholder="(555) 123-4567" />
+                                <span asp-validation-for="EmergencyContactPhone" class="text-red-400 text-sm"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agreement -->
+                <div class="glass rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-file-contract text-white text-sm"></i>
+                        </div>
+                        Agreement
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="flex items-start text-white">
+                                <input asp-for="AgreeToTerms" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue mt-1" />
+                                <span class="font-semibold">I agree to the terms and conditions of adoption, including providing proper care, medical attention, and a loving home for @pet?.Name. I understand that this is a lifetime commitment.</span>
+                            </label>
+                            <span asp-validation-for="AgreeToTerms" class="text-red-400 text-sm"></span>
+                        </div>
+
+                        <div>
+                            <label class="flex items-start text-white">
+                                <input asp-for="AgreeToHomeVisit" type="checkbox" class="mr-3 w-5 h-5 text-primary-blue bg-transparent border-2 border-gray-600 rounded focus:ring-primary-blue mt-1" />
+                                <span class="font-semibold">I agree to a home visit before and/or after adoption to ensure @pet?.Name's safety and well-being.</span>
+                            </label>
+                            <span asp-validation-for="AgreeToHomeVisit" class="text-red-400 text-sm"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="bg-gradient-to-r from-primary-blue to-primary-purple hover:from-primary-purple hover:to-primary-blue px-12 py-4 rounded-lg text-white font-bold text-lg transition-all duration-300 sharp-shadow transform hover:scale-105">
+                        <i class="fas fa-heart mr-2"></i>
+                        Submit Adoption Application
+                    </button>
+                    <p class="text-gray-400 mt-4">
+                        We'll review your application and contact you within 2-3 business days.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

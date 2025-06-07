@@ -1,0 +1,254 @@
+@model CarePet.Models.Pet
+@{
+    ViewData["Title"] = $"{Model.Name} - Pet Details";
+}
+
+<!-- Hero Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Back Button -->
+        <div class="mb-8">
+            <a asp-controller="Home" asp-action="Pets" class="glass px-6 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to All Pets
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Pet Image -->
+            <div class="glass-dark rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-square overflow-hidden">
+                    <img src="@Model.ImageUrl" alt="@Model.Name" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <!-- Pet Information -->
+            <div class="space-y-8">
+                <!-- Basic Info Card -->
+                <div class="glass-dark rounded-2xl p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-4xl md:text-5xl font-bold text-white">@Model.Name</h1>
+                        @if (Model.IsAvailable)
+                        {
+                            <span class="glass px-4 py-2 rounded-full text-primary-green font-semibold">
+                                <i class="fas fa-heart mr-2"></i>
+                                Available
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="glass px-4 py-2 rounded-full text-red-400 font-semibold">
+                                <i class="fas fa-times mr-2"></i>
+                                Adopted
+                            </span>
+                        }
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-tag text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Type</h3>
+                                <p class="text-gray-300">@Model.Type</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-award text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Breed</h3>
+                                <p class="text-gray-300">@Model.Breed</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-birthday-cake text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Age</h3>
+                                <p class="text-gray-300">@Model.Age year@(Model.Age != 1 ? "s" : "") old</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-@(Model.Gender.ToLower() == "male" ? "mars" : "venus") text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Gender</h3>
+                                <p class="text-gray-300">@Model.Gender</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-pink rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-palette text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Color</h3>
+                                <p class="text-gray-300">@Model.Color</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Available Since</h3>
+                                <p class="text-gray-300">@Model.CreatedDate.ToString("MMMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Model.IsAvailable)
+                    {
+                        <a asp-controller="Home" asp-action="Adopt" asp-route-petId="@Model.Id" 
+                           class="w-full bg-gradient-to-r from-primary-blue to-primary-purple hover:from-primary-purple hover:to-primary-blue px-8 py-4 rounded-lg text-white font-semibold transition-all duration-300 sharp-shadow transform hover:scale-105 block text-center">
+                            <i class="fas fa-heart mr-2"></i>
+                            Adopt @Model.Name
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="w-full glass-dark px-8 py-4 rounded-lg text-gray-500 font-semibold cursor-not-allowed" disabled>
+                            <i class="fas fa-times mr-2"></i>
+                            Not Available for Adoption
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="mt-16">
+            <div class="glass-dark rounded-3xl p-8 md:p-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    About <span class="gradient-text">@Model.Name</span>
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    @Model.Description
+                </p>
+            </div>
+        </div>
+
+        <!-- Care Requirements -->
+        <div class="mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Care <span class="gradient-text">Requirements</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    What @Model.Name needs to thrive in their new home.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @if (Model.Type.ToLower() == "dog")
+                {
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-running text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Daily Exercise</h3>
+                        <p class="text-gray-300">@(Model.Age <= 2 ? "High energy - needs 60+ minutes daily" : Model.Age <= 5 ? "Moderate energy - needs 45 minutes daily" : "Low-moderate energy - needs 30 minutes daily")</p>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Training</h3>
+                        <p class="text-gray-300">@(Model.Age <= 1 ? "Puppy training and socialization needed" : "Basic obedience and continued training recommended")</p>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-home text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Living Space</h3>
+                        <p class="text-gray-300">@(Model.Breed.Contains("Retriever") || Model.Breed.Contains("Shepherd") ? "House with yard preferred" : "Apartment or house suitable")</p>
+                    </div>
+                }
+                else if (Model.Type.ToLower() == "cat")
+                {
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-couch text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Indoor Living</h3>
+                        <p class="text-gray-300">Safe indoor environment with climbing opportunities and cozy spots</p>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-gamepad text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Playtime</h3>
+                        <p class="text-gray-300">Interactive toys and regular play sessions to keep mentally stimulated</p>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-cut text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Grooming</h3>
+                        <p class="text-gray-300">@(Model.Breed.Contains("Persian") || Model.Breed.Contains("Maine Coon") ? "Daily brushing required for long hair" : "Weekly brushing to maintain healthy coat")</p>
+                    </div>
+                }
+
+                <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Love & Attention</h3>
+                    <p class="text-gray-300">Daily interaction, affection, and quality time with family members</p>
+                </div>
+
+                <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-purple to-primary-pink rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-stethoscope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Healthcare</h3>
+                    <p class="text-gray-300">Regular vet checkups, vaccinations, and preventive care</p>
+                </div>
+
+                <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-purple to-primary-pink rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-home text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Home Visit</h3>
+                    <p class="text-gray-300">We will visit your home to meet the pet and your family</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Pets -->
+        <div class="mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Other <span class="gradient-text">Amazing Pets</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Meet some other wonderful companions looking for their forever homes.
+                </p>
+            </div>
+
+            <div class="flex gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Pets" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                    <i class="fas fa-paw mr-2"></i>
+                    Browse All Pets
+                </a>
+                <a asp-controller="Home" asp-action="Contact" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-purple hover:text-white transition-all duration-300 sharp-shadow-pink">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Have Questions?
+                </a>
+            </div>
+        </div>
+    </div>
+</section> 

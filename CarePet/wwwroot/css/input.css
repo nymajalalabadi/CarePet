@@ -56,4 +56,32 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* Form input styles */
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: #2979FF;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.2);
+}
+
+.glass-input::placeholder {
+  color: rgba(156, 163, 175, 0.8);
+}
+
+/* Success message styles */
+.glass-success {
+  background: rgba(0, 230, 118, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 230, 118, 0.2);
 } 
