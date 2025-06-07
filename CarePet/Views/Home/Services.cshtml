@@ -1,0 +1,399 @@
+@model List<CarePet.Models.CareService>
+@{
+    ViewData["Title"] = "Pet Care Services - Professional Care for Your Beloved Pets";
+}
+
+<!-- Header Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Premium <span class="gradient-text">Pet Care Services</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Comprehensive care services designed to keep your beloved pets healthy, happy, and well-groomed. Our experienced professionals provide top-quality care with love and attention.
+            </p>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="glass-dark rounded-2xl p-6 mb-12">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="category-btn active px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="all">
+                    All Services
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Grooming">
+                    <i class="fas fa-cut mr-2"></i>
+                    Grooming
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Medical">
+                    <i class="fas fa-stethoscope mr-2"></i>
+                    Medical
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Training">
+                    <i class="fas fa-graduation-cap mr-2"></i>
+                    Training
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Care">
+                    <i class="fas fa-home mr-2"></i>
+                    Care
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Exercise">
+                    <i class="fas fa-running mr-2"></i>
+                    Exercise
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="Boarding">
+                    <i class="fas fa-bed mr-2"></i>
+                    Boarding
+                </button>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var service in Model)
+            {
+                <div class="service-card glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow group" 
+                     data-category="@service.Category">
+                    <div class="p-8">
+                        <!-- Service Icon & Popular Badge -->
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-@service.IconName text-white text-2xl"></i>
+                            </div>
+                            @if (service.IsPopular)
+                            {
+                                <span class="glass px-3 py-1 rounded-full text-sm text-primary-yellow font-medium">
+                                    <i class="fas fa-star mr-1"></i>
+                                    Popular
+                                </span>
+                            }
+                        </div>
+
+                        <!-- Service Info -->
+                        <h3 class="text-2xl font-bold text-white mb-4">@service.Title</h3>
+                        <p class="text-gray-300 mb-6 line-clamp-3">@service.Description</p>
+
+                        <!-- Service Details -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center">
+                                    <i class="fas fa-dollar-sign text-primary-green mr-2"></i>
+                                    Price
+                                </span>
+                                <span class="text-primary-yellow font-bold text-xl">$@service.Price.ToString("F0")</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center">
+                                    <i class="fas fa-clock text-primary-blue mr-2"></i>
+                                    Duration
+                                </span>
+                                <span class="text-white font-medium">@service.Duration</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 flex items-center">
+                                    <i class="fas fa-tag text-primary-pink mr-2"></i>
+                                    Category
+                                </span>
+                                <span class="text-white font-medium">@service.Category</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass px-4 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                                <i class="fas fa-calendar mr-2"></i>
+                                Book Now
+                            </button>
+                            <button class="glass p-3 rounded-lg text-primary-pink hover:bg-primary-pink hover:text-white transition-all duration-300">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="glass-dark rounded-2xl p-12 max-w-md mx-auto">
+                <i class="fas fa-search text-6xl text-gray-400 mb-6"></i>
+                <h3 class="text-2xl font-bold text-white mb-4">No Services Found</h3>
+                <p class="text-gray-300 mb-6">We couldn't find any services in this category.</p>
+                <button id="showAllServices" class="glass px-6 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                    Show All Services
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Why Choose <span class="gradient-text">CarePet Services?</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user-md text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Licensed Professionals</h3>
+                <p class="text-gray-300">Certified veterinarians and trained pet care specialists.</p>
+            </div>
+
+            <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-clock text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">24/7 Emergency Care</h3>
+                <p class="text-gray-300">Round-the-clock emergency services for your peace of mind.</p>
+            </div>
+
+            <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-heart text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Personalized Care</h3>
+                <p class="text-gray-300">Tailored services to meet your pet's specific needs.</p>
+            </div>
+
+            <div class="glass-dark rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Fully Insured</h3>
+                <p class="text-gray-300">Complete insurance coverage for your protection.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Plans Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Flexible <span class="gradient-text">Care Plans</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Choose from our flexible care plans designed to fit your budget and your pet's needs.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Basic Plan -->
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">Basic Care</h3>
+                    <div class="text-4xl font-bold text-primary-blue mb-2">$99</div>
+                    <p class="text-gray-300">per month</p>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Monthly health checkup
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Basic grooming
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Emergency consultation
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Pet care tips & advice
+                    </li>
+                </ul>
+                <button class="w-full glass px-6 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                    Choose Basic
+                </button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300 relative border-2 border-primary-purple">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="glass px-4 py-2 rounded-full text-sm text-primary-yellow font-medium">
+                        Most Popular
+                    </span>
+                </div>
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">Premium Care</h3>
+                    <div class="text-4xl font-bold text-primary-purple mb-2">$199</div>
+                    <p class="text-gray-300">per month</p>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Everything in Basic
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Bi-weekly health checkups
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Professional grooming
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Dental care
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Training sessions
+                    </li>
+                </ul>
+                <button class="w-full bg-primary-purple hover:bg-primary-blue px-6 py-3 rounded-lg text-white font-medium transition-all duration-300">
+                    Choose Premium
+                </button>
+            </div>
+
+            <!-- VIP Plan -->
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">VIP Care</h3>
+                    <div class="text-4xl font-bold text-primary-yellow mb-2">$299</div>
+                    <p class="text-gray-300">per month</p>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Everything in Premium
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Weekly health checkups
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Premium grooming & spa
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        Specialized training
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-check text-primary-green mr-3"></i>
+                        24/7 on-call veterinarian
+                    </li>
+                </ul>
+                <button class="w-full glass px-6 py-3 rounded-lg text-primary-yellow font-medium hover:bg-primary-yellow hover:text-black transition-all duration-300">
+                    Choose VIP
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Book <span class="gradient-text">Our Services?</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Give your pet the care they deserve. Contact us today to schedule an appointment or learn more about our services.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Contact" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                    <i class="fas fa-calendar mr-2"></i>
+                    Book Appointment
+                </a>
+                <a href="tel:+1-555-123-4567" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-green hover:text-white transition-all duration-300 sharp-shadow-pink">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const servicesGrid = document.getElementById('servicesGrid');
+            const noResults = document.getElementById('noResults');
+            const showAllButton = document.getElementById('showAllServices');
+
+            function filterServices(category) {
+                const serviceCards = document.querySelectorAll('.service-card');
+                let visibleCount = 0;
+
+                serviceCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    
+                    if (category === 'all' || cardCategory === category) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    servicesGrid.style.display = 'none';
+                    noResults.classList.remove('hidden');
+                } else {
+                    servicesGrid.style.display = 'grid';
+                    noResults.classList.add('hidden');
+                }
+            }
+
+            function setActiveCategory(activeBtn) {
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.remove('bg-primary-blue', 'text-white');
+                    btn.classList.add('glass', 'text-gray-300');
+                });
+                
+                activeBtn.classList.add('active', 'bg-primary-blue', 'text-white');
+                activeBtn.classList.remove('glass', 'text-gray-300');
+            }
+
+            // Event listeners for category buttons
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    setActiveCategory(this);
+                    filterServices(category);
+                });
+            });
+
+            // Show all services button
+            showAllButton.addEventListener('click', function() {
+                const allBtn = document.querySelector('[data-category="all"]');
+                setActiveCategory(allBtn);
+                filterServices('all');
+            });
+
+            // Initialize
+            filterServices('all');
+        });
+    </script>
+}
+
+<style>
+    .line-clamp-3 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .category-btn {
+        @@apply glass text-gray-300 hover:text-white hover:bg-white/20;
+    }
+
+    .category-btn.active {
+        @@apply bg-primary-blue text-white;
+    }
+</style> 

@@ -1,0 +1,12 @@
+{
+  "name": "carepet",
+  "version": "1.0.0",
+  "description": "CarePet website with .NET MVC",
+  "scripts": {
+    "build-css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/forms": "^0.5.7"
+  }
+} 

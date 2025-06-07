@@ -1,0 +1,179 @@
+﻿@model List<CarePet.Models.Pet>
+@{
+    ViewData["Title"] = "Home - Find Your Perfect Pet Companion";
+}
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 animate-float">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                Find Your Perfect
+                <span class="gradient-text">Pet Companion</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                Connect with loving pets looking for their forever homes. Professional care services to keep your furry friends healthy and happy.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Pets" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                    <i class="fas fa-heart mr-2"></i>
+                    Browse Pets
+                </a>
+                <a asp-controller="Home" asp-action="Services" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-purple hover:text-white transition-all duration-300 sharp-shadow-pink">
+                    <i class="fas fa-paw mr-2"></i>
+                    Our Services
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Pets Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                Meet Our <span class="gradient-text">Featured Pets</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                These adorable companions are waiting to find their perfect family. Each one has been lovingly cared for and is ready for adoption.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var pet in Model)
+            {
+                <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow group">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="@pet.ImageUrl" alt="@pet.Name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold text-white">@pet.Name</h3>
+                            <span class="glass px-3 py-1 rounded-full text-sm text-primary-green font-medium">
+                                @pet.Age year@(pet.Age != 1 ? "s" : "") old
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-4 mb-3 text-gray-300">
+                            <span class="flex items-center">
+                                <i class="fas fa-tag text-primary-blue mr-2"></i>
+                                @pet.Type
+                            </span>
+                            <span class="flex items-center">
+                                <i class="fas fa-palette text-primary-pink mr-2"></i>
+                                @pet.Color
+                            </span>
+                        </div>
+                        <p class="text-gray-400 mb-4 line-clamp-2">@pet.Description</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-primary-yellow font-semibold">@pet.Breed</span>
+                            <button class="glass px-4 py-2 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart mr-2"></i>
+                                Adopt Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-12">
+            <a asp-controller="Home" asp-action="Pets" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                View All Pets
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                Premium <span class="gradient-text">Pet Care Services</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Professional care services designed to keep your beloved pets healthy, happy, and well-groomed.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-cut text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Pet Grooming</h3>
+                <p class="text-gray-300 mb-6">Professional grooming services to keep your pets clean, healthy, and looking their best.</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-primary-yellow font-bold text-xl">$45</span>
+                    <span class="text-gray-400">1-2 hours</span>
+                </div>
+            </div>
+
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-stethoscope text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Veterinary Care</h3>
+                <p class="text-gray-300 mb-6">Comprehensive health checkups and medical care from licensed veterinarians.</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-primary-yellow font-bold text-xl">$75</span>
+                    <span class="text-gray-400">30-60 min</span>
+                </div>
+            </div>
+
+            <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-home text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Pet Sitting</h3>
+                <p class="text-gray-300 mb-6">Reliable and loving pet sitting services when you're away from home.</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-primary-yellow font-bold text-xl">$25</span>
+                    <span class="text-gray-400">Per day</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a asp-controller="Home" asp-action="Services" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                View All Services
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Find Your <span class="gradient-text">Perfect Match?</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join thousands of happy families who have found their beloved pets through CarePet. Start your journey today!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Contact" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                    <i class="fas fa-phone mr-2"></i>
+                    Contact Us
+                </a>
+                <a asp-controller="Home" asp-action="About" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-purple hover:text-white transition-all duration-300 sharp-shadow-pink">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .line-clamp-2 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+</style>

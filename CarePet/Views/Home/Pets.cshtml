@@ -1,0 +1,241 @@
+@model List<CarePet.Models.Pet>
+@{
+    ViewData["Title"] = "Our Pets - Find Your Perfect Companion";
+}
+
+<!-- Header Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Our Adorable <span class="gradient-text">Pets</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Every pet here is looking for a loving home. Each one has been carefully vetted, vaccinated, and is ready to become a cherished member of your family.
+            </p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="glass-dark rounded-2xl p-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Pet Type</label>
+                    <select id="petType" class="glass w-full rounded-lg px-4 py-2 text-white bg-transparent border border-white/20 focus:border-primary-blue focus:outline-none">
+                        <option value="">All Types</option>
+                        <option value="Dog">Dogs</option>
+                        <option value="Cat">Cats</option>
+                        <option value="Bird">Birds</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Age</label>
+                    <select id="petAge" class="glass w-full rounded-lg px-4 py-2 text-white bg-transparent border border-white/20 focus:border-primary-blue focus:outline-none">
+                        <option value="">All Ages</option>
+                        <option value="1">Puppy/Kitten (0-1 year)</option>
+                        <option value="2-4">Young (2-4 years)</option>
+                        <option value="5+">Adult (5+ years)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Gender</label>
+                    <select id="petGender" class="glass w-full rounded-lg px-4 py-2 text-white bg-transparent border border-white/20 focus:border-primary-blue focus:outline-none">
+                        <option value="">All Genders</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="resetFilters" class="glass w-full px-4 py-2 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                        <i class="fas fa-refresh mr-2"></i>
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pets Grid -->
+        <div id="petsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var pet in Model)
+            {
+                <div class="pet-card glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow group" 
+                     data-type="@pet.Type" 
+                     data-age="@pet.Age" 
+                     data-gender="@pet.Gender">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="@pet.ImageUrl" alt="@pet.Name" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold text-white">@pet.Name</h3>
+                            <span class="glass px-3 py-1 rounded-full text-sm text-primary-green font-medium">
+                                @pet.Age year@(pet.Age != 1 ? "s" : "") old
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-3 text-gray-300">
+                            <span class="flex items-center">
+                                <i class="fas fa-tag text-primary-blue mr-2"></i>
+                                @pet.Type
+                            </span>
+                            <span class="flex items-center">
+                                <i class="fas fa-palette text-primary-pink mr-2"></i>
+                                @pet.Color
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-4 text-gray-300">
+                            <span class="flex items-center">
+                                <i class="fas fa-@(pet.Gender.ToLower() == "male" ? "mars" : "venus") text-primary-yellow mr-2"></i>
+                                @pet.Gender
+                            </span>
+                            <span class="flex items-center">
+                                <i class="fas fa-award text-primary-purple mr-2"></i>
+                                @pet.Breed
+                            </span>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-6 line-clamp-3">@pet.Description</p>
+                        
+                        <div class="flex items-center gap-3">
+                            <button class="flex-1 glass px-4 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                                <i class="fas fa-heart mr-2"></i>
+                                Adopt @pet.Name
+                            </button>
+                            <button class="glass p-3 rounded-lg text-primary-pink hover:bg-primary-pink hover:text-white transition-all duration-300">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="glass-dark rounded-2xl p-12 max-w-md mx-auto">
+                <i class="fas fa-search text-6xl text-gray-400 mb-6"></i>
+                <h3 class="text-2xl font-bold text-white mb-4">No Pets Found</h3>
+                <p class="text-gray-300 mb-6">We couldn't find any pets matching your criteria. Try adjusting your filters.</p>
+                <button id="showAllPets" class="glass px-6 py-3 rounded-lg text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300">
+                    Show All Pets
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Can't Find the <span class="gradient-text">Perfect Pet?</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                New pets arrive regularly! Contact us to let us know what you're looking for, and we'll notify you when the perfect companion becomes available.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Contact" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                    <i class="fas fa-bell mr-2"></i>
+                    Get Notified
+                </a>
+                <a asp-controller="Home" asp-action="Services" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-purple hover:text-white transition-all duration-300 sharp-shadow-pink">
+                    <i class="fas fa-heart mr-2"></i>
+                    Care Services
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const petTypeFilter = document.getElementById('petType');
+            const petAgeFilter = document.getElementById('petAge');
+            const petGenderFilter = document.getElementById('petGender');
+            const resetButton = document.getElementById('resetFilters');
+            const showAllButton = document.getElementById('showAllPets');
+            const petsGrid = document.getElementById('petsGrid');
+            const noResults = document.getElementById('noResults');
+
+            function filterPets() {
+                const typeValue = petTypeFilter.value;
+                const ageValue = petAgeFilter.value;
+                const genderValue = petGenderFilter.value;
+                
+                const petCards = document.querySelectorAll('.pet-card');
+                let visibleCount = 0;
+
+                petCards.forEach(card => {
+                    const petType = card.dataset.type;
+                    const petAge = parseInt(card.dataset.age);
+                    const petGender = card.dataset.gender;
+
+                    let showCard = true;
+
+                    // Type filter
+                    if (typeValue && petType !== typeValue) {
+                        showCard = false;
+                    }
+
+                    // Age filter
+                    if (ageValue) {
+                        if (ageValue === '1' && petAge > 1) showCard = false;
+                        if (ageValue === '2-4' && (petAge < 2 || petAge > 4)) showCard = false;
+                        if (ageValue === '5+' && petAge < 5) showCard = false;
+                    }
+
+                    // Gender filter
+                    if (genderValue && petGender !== genderValue) {
+                        showCard = false;
+                    }
+
+                    if (showCard) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    petsGrid.style.display = 'none';
+                    noResults.classList.remove('hidden');
+                } else {
+                    petsGrid.style.display = 'grid';
+                    noResults.classList.add('hidden');
+                }
+            }
+
+            function resetFilters() {
+                petTypeFilter.value = '';
+                petAgeFilter.value = '';
+                petGenderFilter.value = '';
+                filterPets();
+            }
+
+            // Event listeners
+            petTypeFilter.addEventListener('change', filterPets);
+            petAgeFilter.addEventListener('change', filterPets);
+            petGenderFilter.addEventListener('change', filterPets);
+            resetButton.addEventListener('click', resetFilters);
+            showAllButton.addEventListener('click', resetFilters);
+        });
+    </script>
+}
+
+<style>
+    .line-clamp-3 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    select option {
+        background-color: #0A0A0A;
+        color: white;
+    }
+</style> 

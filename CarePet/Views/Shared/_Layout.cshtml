@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CarePet</title>
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" />
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white min-h-screen">
+    <!-- Animated Gradient Background -->
+    <div class="animated-gradient-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="relative z-50 glass-dark border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a asp-controller="Home" asp-action="Index" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-primary-purple rounded-lg flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold gradient-text">CarePet</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link-style">Home</a>
+                        <a asp-controller="Home" asp-action="Pets" class="nav-link-style">Our Pets</a>
+                        <a asp-controller="Home" asp-action="Services" class="nav-link-style">Services</a>
+                        <a asp-controller="Home" asp-action="About" class="nav-link-style">About</a>
+                        <a asp-controller="Home" asp-action="Contact" class="nav-link-style">Contact</a>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a asp-controller="Home" asp-action="Contact" class="glass px-6 py-2 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
+                        Adopt Now
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-button" class="glass p-2 rounded-lg">
+                        <i class="fas fa-bars text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 glass-dark border-t border-white/10">
+                <a asp-controller="Home" asp-action="Index" class="mobile-nav-link">Home</a>
+                <a asp-controller="Home" asp-action="Pets" class="mobile-nav-link">Our Pets</a>
+                <a asp-controller="Home" asp-action="Services" class="mobile-nav-link">Services</a>
+                <a asp-controller="Home" asp-action="About" class="mobile-nav-link">About</a>
+                <a asp-controller="Home" asp-action="Contact" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 glass-dark border-t border-white/10 mt-20">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-primary-purple rounded-lg flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold gradient-text">CarePet</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 max-w-md">
+                        Connecting loving families with adorable pets. We provide comprehensive care services to ensure your furry friends live their happiest lives.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-blue hover:text-primary-purple transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary-blue hover:text-primary-purple transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary-blue hover:text-primary-purple transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-primary-yellow">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a asp-controller="Home" asp-action="Index" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a asp-controller="Home" asp-action="Pets" class="text-gray-300 hover:text-white transition-colors">Our Pets</a></li>
+                        <li><a asp-controller="Home" asp-action="Services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a asp-controller="Home" asp-action="About" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-primary-green">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">
+                            <i class="fas fa-phone text-primary-blue mr-2"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="text-gray-300">
+                            <i class="fas fa-envelope text-primary-blue mr-2"></i>
+                            info@carepet.com
+                        </li>
+                        <li class="text-gray-300">
+                            <i class="fas fa-map-marker-alt text-primary-blue mr-2"></i>
+                            123 Pet Care St, City
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; @DateTime.Now.Year CarePet. All rights reserved. Made with ❤️ for pet lovers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/js/animated-gradient-background.js" asp-append-version="true"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <style>
+        .nav-link-style {
+            @@apply text-gray-300 hover:text-white transition-colors duration-300 font-medium;
+        }
+        
+        .mobile-nav-link {
+            @@apply block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-all duration-300;
+        }
+    </style>
+</body>
+</html>
