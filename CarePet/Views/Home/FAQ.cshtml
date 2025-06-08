@@ -1,0 +1,380 @@
+@model List<CarePet.Models.FAQ>
+@{
+    ViewData["Title"] = "Frequently Asked Questions";
+}
+
+<!-- Page Header -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Frequently Asked <span class="gradient-text">Questions</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Find quick answers to common questions about pet adoption, care services, and our processes. Everything you need to know about CarePet's services and policies.
+            </p>
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Get <span class="gradient-text">Instant Answers</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        We've compiled the most common questions about our adoption process, care services, fees, and policies. Can't find what you're looking for? Our support team is always ready to help.
+                    </p>
+                    <p class="text-lg text-gray-300 mb-6">
+                        From adoption requirements to post-adoption support, find detailed answers that will guide you through every step of your journey with CarePet.
+                    </p>
+                    
+                    <!-- Search Bar -->
+                    <div class="max-w-md">
+                        <div class="relative">
+                            <input type="text" id="faq-search" placeholder="Search questions..." class="w-full glass px-6 py-4 rounded-full bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                            <button class="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-primary-purple transition-all duration-300">
+                                <i class="fas fa-search text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=400&fit=crop" 
+                         alt="Pet adoption questions and support" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Topics -->
+<section class="pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">Popular Topics</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="glass px-4 py-2 rounded-full text-primary-blue font-medium hover:bg-primary-blue hover:text-white transition-all duration-300 topic-filter active" data-category="all">
+                All Questions
+            </button>
+            <button class="glass px-4 py-2 rounded-full text-gray-300 font-medium hover:bg-primary-green hover:text-white transition-all duration-300 topic-filter" data-category="Adoption">
+                Adoption
+            </button>
+            <button class="glass px-4 py-2 rounded-full text-gray-300 font-medium hover:bg-primary-pink hover:text-white transition-all duration-300 topic-filter" data-category="Fees">
+                Fees & Costs
+            </button>
+            <button class="glass px-4 py-2 rounded-full text-gray-300 font-medium hover:bg-primary-yellow hover:text-white transition-all duration-300 topic-filter" data-category="Services">
+                Services
+            </button>
+            <button class="glass px-4 py-2 rounded-full text-gray-300 font-medium hover:bg-primary-purple hover:text-white transition-all duration-300 topic-filter" data-category="Policy">
+                Policies
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="space-y-6" id="faq-list">
+            @foreach (var faq in Model)
+            {
+                <div class="glass-dark rounded-2xl overflow-hidden faq-item" data-category="@faq.Category">
+                    <button class="w-full p-6 text-left flex items-center justify-between faq-toggle hover:bg-white/5 transition-all duration-300" data-target="faq-@faq.Id">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white mb-2">@faq.Question</h3>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-primary-green font-medium">@faq.Category</span>
+                        </div>
+                        <div class="ml-4">
+                            <i class="fas fa-chevron-down text-primary-blue transition-transform duration-300 faq-icon"></i>
+                        </div>
+                    </button>
+                    <div id="faq-@faq.Id" class="hidden px-6 pb-6">
+                        <div class="pl-4 border-l-2 border-primary-blue/30">
+                            <p class="text-gray-300 leading-relaxed">@faq.Answer</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <!-- No Results Message -->
+        <div id="no-results" class="text-center py-12 hidden">
+            <div class="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-search text-white text-xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">No questions found</h3>
+            <p class="text-gray-400">Try adjusting your search terms or browse by category.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Help Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Need More <span class="gradient-text">Help?</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Can't find what you're looking for? We're here to help you every step of the way.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Support -->
+            <div class="glass-dark rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-headset text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Contact Support</h3>
+                <p class="text-gray-300 mb-6">Get personalized help from our friendly support team.</p>
+                <a asp-controller="Home" asp-action="Contact" class="glass px-6 py-3 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 inline-block">
+                    Get Help
+                </a>
+            </div>
+            
+            <!-- Live Chat -->
+            <div class="glass-dark rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-comments text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Live Chat</h3>
+                <p class="text-gray-300 mb-6">Chat with us in real-time for immediate assistance.</p>
+                <button class="glass px-6 py-3 rounded-full text-primary-green font-semibold hover:bg-primary-green hover:text-white transition-all duration-300">
+                    Start Chat
+                </button>
+            </div>
+            
+            <!-- Schedule Visit -->
+            <div class="glass-dark rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-calendar-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Schedule Visit</h3>
+                <p class="text-gray-300 mb-6">Book a visit to meet our pets and see our facilities.</p>
+                <button class="glass px-6 py-3 rounded-full text-primary-pink font-semibold hover:bg-primary-pink hover:text-white transition-all duration-300">
+                    Book Visit
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Helpful Resources -->
+<section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Helpful <span class="gradient-text">Resources</span>
+            </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a asp-controller="Home" asp-action="AdoptionProcess" class="glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-clipboard-list text-white"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Adoption Process</h3>
+                <p class="text-gray-400 text-sm">Step-by-step guide to adoption</p>
+            </a>
+            
+            <a asp-controller="Home" asp-action="Services" class="glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-spa text-white"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Pet Services</h3>
+                <p class="text-gray-400 text-sm">All available care services</p>
+            </a>
+            
+            <a asp-controller="Home" asp-action="Blog" class="glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-blog text-white"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Pet Care Blog</h3>
+                <p class="text-gray-400 text-sm">Tips and advice articles</p>
+            </a>
+            
+            <a asp-controller="Home" asp-action="Volunteer" class="glass-dark rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-hands-helping text-white"></i>
+                </div>
+                <h3 class="text-white font-semibold mb-2">Volunteer</h3>
+                <p class="text-gray-400 text-sm">Join our volunteer program</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Toggle functionality
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const target = document.getElementById(targetId);
+                    const icon = this.querySelector('.faq-icon');
+                    const isOpen = !target.classList.contains('hidden');
+                    
+                    // Close all other FAQs
+                    faqToggles.forEach(otherToggle => {
+                        if (otherToggle !== this) {
+                            const otherTargetId = otherToggle.getAttribute('data-target');
+                            const otherTarget = document.getElementById(otherTargetId);
+                            const otherIcon = otherToggle.querySelector('.faq-icon');
+                            
+                            otherTarget.classList.add('hidden');
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current FAQ
+                    if (isOpen) {
+                        target.classList.add('hidden');
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        target.classList.remove('hidden');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+            
+            // Category filtering
+            const topicFilters = document.querySelectorAll('.topic-filter');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            topicFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active state
+                    topicFilters.forEach(f => {
+                        f.classList.remove('active', 'bg-primary-blue', 'text-white');
+                        f.classList.add('text-gray-300');
+                    });
+                    this.classList.add('active', 'bg-primary-blue', 'text-white');
+                    this.classList.remove('text-gray-300');
+                    
+                    // Filter FAQs
+                    let visibleCount = 0;
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeIn 0.5s ease-in-out';
+                            visibleCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide no results message
+                    document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('faq-search');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                let visibleCount = 0;
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h3').textContent.toLowerCase();
+                    const answer = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                        
+                        // Highlight search terms
+                        if (searchTerm) {
+                            highlightSearchTerm(item, searchTerm);
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                document.getElementById('no-results').style.display = visibleCount === 0 && searchTerm ? 'block' : 'none';
+                
+                // Reset category filters when searching
+                if (searchTerm) {
+                    topicFilters.forEach(f => {
+                        f.classList.remove('active', 'bg-primary-blue', 'text-white');
+                        f.classList.add('text-gray-300');
+                    });
+                    topicFilters[0].classList.add('active', 'bg-primary-blue', 'text-white');
+                }
+            });
+            
+            function highlightSearchTerm(item, term) {
+                // Simple highlighting implementation
+                const question = item.querySelector('h3');
+                const originalText = question.textContent;
+                const highlightedText = originalText.replace(new RegExp(term, 'gi'), match => 
+                    `<span class="bg-primary-yellow/30 text-primary-yellow">${match}</span>`
+                );
+                question.innerHTML = highlightedText;
+            }
+        });
+        
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @@keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+}
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #2979FF, #00E676, #FF80AB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+    }
+    
+    .topic-filter.active {
+        background: #2979FF !important;
+        color: white !important;
+    }
+    
+    .faq-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    input:focus {
+        outline: none;
+    }
+    
+    .faq-item {
+        transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+</style> 

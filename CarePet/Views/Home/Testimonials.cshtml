@@ -1,0 +1,355 @@
+@model List<CarePet.Models.Testimonial>
+@{
+    ViewData["Title"] = "Customer Testimonials";
+}
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Customer <span class="gradient-text">Testimonials</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Real stories from families who found their perfect companions through CarePet. See why pet lovers trust us with their adoption journey.
+            </p>
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Trusted by <span class="gradient-text">Pet Lovers</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Over the years, we've helped thousands of families find their perfect companions. Our commitment to matching pets with loving homes has created countless success stories and lifelong bonds.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        Read the heartwarming testimonials from families who have found joy, love, and companionship through our adoption services.
+                    </p>
+                    
+                    <!-- Statistics -->
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-star text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">4.9</h3>
+                            <p class="text-gray-400 text-sm">Average Rating</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-users text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">@Model.Count+</h3>
+                            <p class="text-gray-400 text-sm">Happy Families</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-heart text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">98%</h3>
+                            <p class="text-gray-400 text-sm">Success Rate</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-paw text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">500+</h3>
+                            <p class="text-gray-400 text-sm">Pets Adopted</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="/image/pets/DogFunny.png" 
+                         alt="Happy families with their adopted pets" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Testimonial -->
+@if (Model.Any())
+{
+    var featuredTestimonial = Model.First();
+    <section class="py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-dark rounded-3xl p-10 md:p-14 lg:p-18 text-center">
+                <div class="flex justify-center mb-8 md:mb-10">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <i class="fas fa-star text-3xl md:text-4xl @(i <= featuredTestimonial.Rating ? "text-primary-yellow" : "text-gray-600") mr-2 md:mr-3"></i>
+                    }
+                </div>
+                
+                <blockquote class="text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-relaxed mb-10 md:mb-12 lg:mb-16 italic">
+                    "@featuredTestimonial.Content"
+                </blockquote>
+                
+                <div class="flex items-center justify-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mr-6 md:mr-8 shadow-lg">
+                        <i class="fas fa-user text-2xl md:text-2xl text-white"></i>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2">@featuredTestimonial.Name</h3>
+                        <p class="text-gray-400 text-base md:text-lg lg:text-xl">Pet Parent to @(string.IsNullOrEmpty(featuredTestimonial.PetName) ? "a wonderful companion" : featuredTestimonial.PetName)</p>
+                        <p class="text-gray-500 text-sm md:text-base mt-1">@featuredTestimonial.Date.ToString("MMMM yyyy")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<!-- Testimonials Grid -->
+<section class="py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-20 lg:mb-24">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10">
+                What Our <span class="gradient-text">Customers Say</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Read authentic stories from families who found their perfect companions through CarePet
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+            @foreach (var testimonial in Model.Skip(1))
+            {
+                <div class="glass-dark rounded-2xl p-6 md:p-7 lg:p-8 hover:scale-105 transition-all duration-300 sharp-shadow testimonial-card">
+                    <!-- Rating Stars -->
+                    <div class="flex items-center mb-5 md:mb-6 pb-3 border-b border-white/10">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <i class="fas fa-star @(i <= testimonial.Rating ? "text-primary-yellow" : "text-gray-600") mr-1 text-lg"></i>
+                        }
+                        <span class="ml-3 text-gray-400 text-sm font-medium">@testimonial.Rating/5</span>
+                    </div>
+                    
+                    <!-- Testimonial Content -->
+                    <blockquote class="text-gray-300 leading-relaxed mb-6 md:mb-7 lg:mb-8 italic text-base md:text-lg min-h-[4rem]">
+                        "@testimonial.Content"
+                    </blockquote>
+                    
+                    <!-- Customer Info -->
+                    <div class="flex items-center mb-4 md:mb-5">
+                        <i class="fas fa-user text-2xl md:text-3xl mr-3 md:mr-4"></i>
+                        <div class="flex-1">
+                            <h4 class="text-white font-semibold text-base md:text-lg mb-1">@testimonial.Name</h4>
+                            @if (!string.IsNullOrEmpty(testimonial.PetName))
+                            {
+                                <p class="text-gray-400 text-sm md:text-base">Pet Parent to @testimonial.PetName</p>
+                            }
+                            @if (!string.IsNullOrEmpty(testimonial.City))
+                            {
+                                <p class="text-gray-500 text-xs md:text-sm">@testimonial.City</p>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-500 text-xs md:text-sm">@testimonial.Date.ToString("MMM yyyy")</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pet Badge (if applicable) -->
+                    @if (!string.IsNullOrEmpty(testimonial.PetName))
+                    {
+                        <div class="mt-4 md:mt-5 pt-4 md:pt-5 border-t border-white/10">
+                            <div class="flex items-center justify-center">
+                                <span class="glass px-4 py-2 rounded-full text-sm text-primary-green font-medium shadow-sm">
+                                    <i class="fas fa-paw mr-2"></i>
+                                    @testimonial.PetName
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        
+    </div>
+</section>
+
+
+
+<!-- Share Your Story -->
+<section class="py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+        <div class="glass-dark rounded-3xl p-10 md:p-14 lg:p-18 text-center">
+            <div class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mx-auto mb-8 md:mb-10 shadow-xl">
+                <i class="fas fa-heart text-white text-2xl md:text-3xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10">
+                Share Your <span class="gradient-text">Adoption Story</span>
+            </h2>
+            <p class="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed">
+                Help inspire others by sharing your pet adoption journey. Your story could help another pet find their forever home and create meaningful connections in our community.
+            </p>
+            
+            <form class="max-w-3xl mx-auto space-y-8 md:space-y-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <input type="text" placeholder="Your Name" class="glass px-6 md:px-8 py-4 md:py-5 rounded-xl bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 text-base md:text-lg">
+                    <input type="text" placeholder="Pet's Name" class="glass px-6 md:px-8 py-4 md:py-5 rounded-xl bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 text-base md:text-lg">
+                </div>
+                
+                <input type="email" placeholder="Email Address" class="w-full glass px-6 md:px-8 py-4 md:py-5 rounded-xl bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 text-base md:text-lg">
+                
+                <textarea rows="6" placeholder="Share your adoption story..." class="w-full glass px-6 md:px-8 py-4 md:py-5 rounded-xl bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 resize-none text-base md:text-lg leading-relaxed"></textarea>
+                
+                <!-- Rating -->
+                <div class="text-center py-4 md:py-6">
+                    <p class="text-white text-lg md:text-xl mb-6 md:mb-8">Rate your experience:</p>
+                    <div class="flex justify-center space-x-3 md:space-x-4">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <button type="button" class="rating-star w-10 h-10 md:w-12 md:h-12 text-gray-400 hover:text-primary-yellow transition-colors duration-300 hover:scale-110" data-rating="@i">
+                                <i class="fas fa-star text-2xl md:text-3xl"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+                
+                <button type="submit" class="bg-gradient-to-r from-primary-blue to-primary-purple px-12 md:px-16 py-4 md:py-5 rounded-full text-white font-semibold hover:from-primary-purple hover:to-primary-blue transition-all duration-300 w-full text-lg md:text-xl shadow-xl hover:shadow-2xl hover:scale-105">
+                    Submit Your Story
+                    <i class="fas fa-paper-plane ml-3"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('load-more');
+            loadMoreBtn.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
+                
+                setTimeout(() => {
+                    this.innerHTML = 'Load More Reviews <i class="fas fa-chevron-down ml-2"></i>';
+                }, 1000);
+            });
+            
+            // Rating system for form
+            const ratingStars = document.querySelectorAll('.rating-star');
+            let selectedRating = 0;
+            
+            ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-rating'));
+                    updateStars();
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const hoverRating = parseInt(this.getAttribute('data-rating'));
+                    updateStarsHover(hoverRating);
+                });
+            });
+            
+            function updateStars() {
+                ratingStars.forEach((star, index) => {
+                    if (index < selectedRating) {
+                        star.classList.add('text-primary-yellow');
+                        star.classList.remove('text-gray-400');
+                    } else {
+                        star.classList.remove('text-primary-yellow');
+                        star.classList.add('text-gray-400');
+                    }
+                });
+            }
+            
+            function updateStarsHover(rating) {
+                ratingStars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.classList.add('text-primary-yellow');
+                        star.classList.remove('text-gray-400');
+                    } else {
+                        star.classList.remove('text-primary-yellow');
+                        star.classList.add('text-gray-400');
+                    }
+                });
+            }
+            
+            // Reset stars on mouse leave
+            document.querySelector('.flex.justify-center.space-x-2').addEventListener('mouseleave', function() {
+                updateStars();
+            });
+            
+            // Testimonial card animations
+            const cards = document.querySelectorAll('.testimonial-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        });
+    </script>
+}
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #2979FF, #00E676, #FF80AB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+    }
+    
+    .sharp-shadow {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .testimonial-card {
+        transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .rating-star {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .rating-star:hover {
+        transform: scale(1.1);
+    }
+    
+    input:focus,
+    textarea:focus {
+        outline: none;
+    }
+    
+    @@keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .fade-in {
+        animation: fade-in 0.6s ease-out forwards;
+    }
+</style> 

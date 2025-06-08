@@ -1,0 +1,522 @@
+@{
+    ViewData["Title"] = "Adoption Process";
+}
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Adoption <span class="gradient-text">Process</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Your journey to finding the perfect companion starts here. Follow our simple step-by-step process designed to ensure the best match for both you and your new pet.
+            </p>
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Your Perfect <span class="gradient-text">Match Awaits</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Our comprehensive adoption process ensures that every pet finds their ideal home and every family finds their perfect companion. We guide you through each step with care and expertise.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        From initial browsing to bringing your new family member home, we're here to support you every step of the way. Our success rate speaks for itself.
+                    </p>
+                    
+                    <!-- Process Overview -->
+                    <div class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 mt-8">
+                        <div class="flex items-center bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
+                            <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-bold">7</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold">7</p>
+                                <p class="text-gray-300 text-sm">Simple Steps</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
+                            <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-bold">3-7</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold">3-7 Days</p>
+                                <p class="text-gray-300 text-sm">Process Time</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
+                            <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-bold">98%</span>
+                            </div>
+                            <div>
+                                <p class="text-white font-semibold">98%</p>
+                                <p class="text-gray-300 text-sm">Success Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="/image/pets/pet2.png" 
+                         alt="Happy families with adopted pets" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Steps -->
+<section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Step 1 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">1</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Browse Available Pets</h3>
+                                <p class="text-gray-400">Explore our loving pets waiting for homes</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Start by browsing our available pets online or visiting our facility. Each pet has a detailed profile including their personality, medical history, and special needs. Take your time to find a pet that matches your lifestyle and preferences.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">View detailed pet profiles</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Filter by age, size, and temperament</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Read success stories and reviews</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a asp-controller="Home" asp-action="Pets" class="glass px-6 py-3 rounded-lg text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 inline-flex items-center">
+                                Browse Pets <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="/image/pets/pet1.png" alt="Browse Pets" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="/image/pets/dog2.png" alt="Submit Application" class="w-full h-full object-cover" />
+                </div>
+                
+                <div>
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">2</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Submit Application</h3>
+                                <p class="text-gray-400">Complete our detailed adoption form</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Fill out our comprehensive adoption application. This helps us understand your living situation, experience with pets, and what you're looking for in a companion. Be honest and thorough - it helps us make the best match!
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Personal and contact information</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Living situation and housing details</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Pet experience and preferences</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button class="glass px-6 py-3 rounded-lg text-primary-green font-semibold hover:bg-primary-green hover:text-white transition-all duration-300 inline-flex items-center">
+                                Start Application <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">3</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Application Review</h3>
+                                <p class="text-gray-400">Our team reviews your application</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Our experienced adoption team carefully reviews your application. We may contact you for additional information or clarification. This typically takes 24-48 hours. We want to ensure the best possible match for both you and the pet.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">24-48 hour review period</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Reference checks if needed</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Compatibility assessment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="/image/pets/dog3.png" alt="Application Review" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="/image/pets/dog4.png" alt="Meet and Greet" class="w-full h-full object-cover" />
+                </div>
+                
+                <div>
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">4</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Meet & Greet</h3>
+                                <p class="text-gray-400">Spend quality time with your potential pet</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Once approved, schedule a meet and greet session with your chosen pet. This is your chance to interact, play, and see if there's a connection. Bring your family members and existing pets (with proper introductions) to ensure everyone gets along.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">One-on-one interaction time</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Family and pet introductions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Behavior assessment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-purple to-primary-pink rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">5</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Home Visit (If Required)</h3>
+                                <p class="text-gray-400">Ensuring a safe environment</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            For certain pets or first-time adopters, we may require a home visit to ensure your living space is safe and suitable. Our team will provide helpful tips and suggestions to make your home pet-ready.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Safety assessment</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Pet-proofing recommendations</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Setup guidance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="/image/pets/dog5.png" alt="Home Visit" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="/image/pets/dog6.png" alt="Adoption Day" class="w-full h-full object-cover" />
+                </div>
+                
+                <div>
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-green rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">6</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Adoption Day</h3>
+                                <p class="text-gray-400">Finalize the adoption paperwork</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Complete the adoption paperwork, pay the adoption fee, and receive your pet's medical records and care instructions. We'll provide a starter kit with essentials to help you get started on the right foot.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Adoption contract and paperwork</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Medical records transfer</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Starter care package</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="relative mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="glass-dark rounded-3xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-yellow rounded-2xl flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">7</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Ongoing Support</h3>
+                                <p class="text-gray-400">We're here for you every step of the way</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Our relationship doesn't end at adoption! We provide ongoing support, training resources, and are always available for questions. We offer follow-up check-ins and lifetime support for you and your new family member.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">30-day follow-up calls</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Training and behavior support</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-primary-green mr-3"></i>
+                                <span class="text-gray-300">Lifetime care guidance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="/image/pets/dog1.png" alt="Ongoing Support" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Requirements Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Adoption <span class="gradient-text">Requirements</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                To ensure the best outcomes for our pets, we have established these requirements for all potential adopters.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-id-card text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Age & Identification</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• Must be 18 years or older</li>
+                    <li>• Valid government-issued ID</li>
+                    <li>• Proof of current address</li>
+                </ul>
+            </div>
+            
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-home text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Housing</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• Stable housing situation</li>
+                    <li>• Landlord permission (if renting)</li>
+                    <li>• Safe environment for pets</li>
+                </ul>
+            </div>
+            
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-dollar-sign text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Financial Readiness</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• Ability to cover pet expenses</li>
+                    <li>• Vet care budget planning</li>
+                    <li>• Emergency fund consideration</li>
+                </ul>
+            </div>
+            
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-clock text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Time Commitment</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• Adequate time for pet care</li>
+                    <li>• Exercise and socialization</li>
+                    <li>• Training and bonding</li>
+                </ul>
+            </div>
+            
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-purple to-primary-pink rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Family Agreement</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• All household members on board</li>
+                    <li>• No pet allergies</li>
+                    <li>• Shared responsibility plan</li>
+                </ul>
+            </div>
+            
+            <div class="glass-dark rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-green rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-stethoscope text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">Veterinary Care</h3>
+                <ul class="text-gray-300 space-y-2 text-sm">
+                    <li>• Commitment to regular vet visits</li>
+                    <li>• Spay/neuter agreement</li>
+                    <li>• Vaccination maintenance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Start Your <span class="gradient-text">Adoption Journey?</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Take the first step towards finding your perfect companion. Browse our available pets or contact us with any questions about the adoption process.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a asp-controller="Home" asp-action="Pets" class="bg-gradient-to-r from-primary-blue to-primary-purple px-8 py-4 rounded-full text-white font-semibold hover:from-primary-purple hover:to-primary-blue transition-all duration-300 inline-flex items-center">
+                    <i class="fas fa-heart mr-2"></i>
+                    Browse Available Pets
+                </a>
+                <a asp-controller="Home" asp-action="Contact" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 inline-flex items-center">
+                    <i class="fas fa-phone mr-2"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #2979FF, #00E676, #FF80AB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+    }
+</style> 

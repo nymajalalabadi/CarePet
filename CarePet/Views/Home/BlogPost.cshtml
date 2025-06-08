@@ -1,0 +1,555 @@
+@model CarePet.Models.BlogPost
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!-- Hero Section -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Blog <span class="gradient-text">Post</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                In-depth articles and expert insights to help you provide the best care for your beloved pets.
+            </p>
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Expert <span class="gradient-text">Knowledge</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Our comprehensive articles are written by veterinarians and pet care professionals to provide you with accurate, up-to-date information for your pet's health and happiness.
+                    </p>
+                    
+                    <!-- Breadcrumbs -->
+                    <nav class="flex items-center space-x-2 text-gray-400 text-sm mb-6">
+                        <a asp-controller="Home" asp-action="Index" class="hover:text-primary-blue transition-colors">Home</a>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                        <a asp-controller="Home" asp-action="Blog" class="hover:text-primary-blue transition-colors">Blog</a>
+                        <i class="fas fa-chevron-right text-xs"></i>
+                        <span class="text-white truncate">@Model.Title</span>
+                    </nav>
+                </div>
+                <div class="relative">
+                    <img src="@Model.ImageUrl" 
+                         alt="@Model.Title" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Article Header -->
+<section class="py-8 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 mt-8 mb-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="glass-dark rounded-3xl p-6 md:p-8 lg:p-12 mx-4 md:mx-0">
+            <div class="text-center mb-8">
+                <!-- Article Meta -->
+                <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-6">
+                    <span class="glass px-4 py-2 rounded-full text-primary-blue font-medium text-sm">
+                        @Model.Category
+                    </span>
+                    <span class="text-gray-400 text-sm md:text-base">@Model.Date.ToString("MMMM dd, yyyy")</span>
+                    <div class="flex items-center text-gray-400 text-sm md:text-base">
+                        <i class="fas fa-eye mr-2"></i>
+                        <span>@Model.Views views</span>
+                    </div>
+                </div>
+                
+                <!-- Article Title -->
+                <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed px-1">
+                    @Model.Title
+                </h1>
+                
+                <!-- Author Info -->
+                <div class="flex items-center justify-center space-x-4 mb-8">
+                    <div class="text-left">
+                        <p class="text-white font-medium text-sm md:text-base leading-relaxed px-1">@Model.Author</p>
+                        <p class="text-gray-400 text-xs md:text-sm leading-relaxed px-1">Pet Care Expert</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Sharing -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <span class="text-gray-400 text-sm leading-relaxed px-1">Share this article:</span>
+                <div class="flex items-center space-x-3">
+                    <button class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 shadow-lg" onclick="shareOnFacebook()">
+                        <i class="fab fa-facebook-f text-white text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 shadow-lg" onclick="shareOnTwitter()">
+                        <i class="fab fa-twitter text-white text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 shadow-lg" onclick="shareOnLinkedIn()">
+                        <i class="fab fa-linkedin-in text-white text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 shadow-lg" onclick="copyLink()">
+                        <i class="fas fa-link text-white text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="py-10 md:py-14 lg:py-18 px-4 sm:px-6 lg:px-8 my-10 md:my-12 lg:my-16">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8 lg:gap-12">
+            <!-- Table of Contents (Sticky Sidebar) - Hidden on mobile -->
+            <div class="xl:col-span-1 order-2 xl:order-1">
+                <div class="glass-dark rounded-2xl p-6 md:p-7 lg:p-8 sticky top-6 lg:top-10 mx-2 md:mx-4 xl:mx-0 mb-8 xl:mb-0 mt-4 xl:mt-0">
+                    <h3 class="text-base lg:text-lg font-semibold text-white mb-6 lg:mb-8 leading-relaxed px-2 md:px-3">Table of Contents</h3>
+                    <nav class="space-y-3 px-2 md:px-3">
+                        <a href="#introduction" class="block text-gray-300 hover:text-primary-blue transition-colors text-sm py-2 leading-relaxed px-2 rounded-lg hover:bg-white/5">Introduction</a>
+                        <a href="#key-points" class="block text-gray-300 hover:text-primary-blue transition-colors text-sm py-2 leading-relaxed px-2 rounded-lg hover:bg-white/5">Key Points</a>
+                        <a href="#tips" class="block text-gray-300 hover:text-primary-blue transition-colors text-sm py-2 leading-relaxed px-2 rounded-lg hover:bg-white/5">Expert Tips</a>
+                        <a href="#conclusion" class="block text-gray-300 hover:text-primary-blue transition-colors text-sm py-2 leading-relaxed px-2 rounded-lg hover:bg-white/5">Conclusion</a>
+                    </nav>
+                    
+                    <!-- Reading Progress -->
+                    <div class="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-white/10 px-2 md:px-3">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-gray-400 text-xs lg:text-sm leading-relaxed px-1">Reading Progress</span>
+                            <span class="text-primary-blue text-xs lg:text-sm font-medium leading-relaxed px-1" id="progress-percentage">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mx-1">
+                            <div class="bg-gradient-to-r from-primary-blue to-primary-green h-2 rounded-full transition-all duration-300" id="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="xl:col-span-3 order-1 xl:order-2">
+                <div class="glass-dark rounded-3xl p-6 md:p-10 lg:p-14 mx-2 md:mx-4 xl:mx-0 my-4 xl:my-0">
+                    <div class="prose prose-lg prose-invert max-w-none p-6 md:p-8 lg:p-12 my-4 md:my-6 lg:my-8" id="article-content">
+                        <div id="introduction" class="mb-10 lg:mb-14 px-2 md:px-4 py-4 md:py-6">
+                            <p class="text-xl text-gray-300 leading-relaxed mb-8 px-2 md:px-3">
+                                @Model.Content
+                            </p>
+                        </div>
+                        
+                        <div id="key-points" class="mb-12 lg:mb-16 px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 my-6 md:my-8 lg:my-10">
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-10 lg:mb-12 leading-relaxed px-3 md:px-4 lg:px-5 py-2 md:py-3">Key Points to Remember</h2>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-10 px-2 md:px-3 lg:px-4">
+                                <div class="glass rounded-2xl p-6 md:p-7 lg:p-8 xl:p-9 my-2 md:my-3 lg:my-4 mx-1 md:mx-2 hover:scale-105 transition-all duration-300">
+                                    <div class="flex items-center mb-5 lg:mb-6 px-2 py-1">
+                                        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mr-4 lg:mr-5 flex-shrink-0">
+                                            <i class="fas fa-heart text-white text-sm lg:text-base"></i>
+                                        </div>
+                                        <h3 class="text-lg lg:text-xl font-semibold text-white leading-relaxed px-2 md:px-3">Regular Care</h3>
+                                    </div>
+                                    <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-3 md:px-4 py-2">Consistent daily care routines are essential for your pet's physical and mental wellbeing.</p>
+                                </div>
+                                
+                                <div class="glass rounded-2xl p-6 md:p-7 lg:p-8 xl:p-9 my-2 md:my-3 lg:my-4 mx-1 md:mx-2 hover:scale-105 transition-all duration-300">
+                                    <div class="flex items-center mb-5 lg:mb-6 px-2 py-1">
+                                        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mr-4 lg:mr-5 flex-shrink-0">
+                                            <i class="fas fa-stethoscope text-white text-sm lg:text-base"></i>
+                                        </div>
+                                        <h3 class="text-lg lg:text-xl font-semibold text-white leading-relaxed px-2 md:px-3">Health Monitoring</h3>
+                                    </div>
+                                    <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-3 md:px-4 py-2">Regular vet checkups and monitoring signs of illness help prevent serious health issues.</p>
+                                </div>
+                                
+                                <div class="glass rounded-2xl p-6 md:p-7 lg:p-8 xl:p-9 my-2 md:my-3 lg:my-4 mx-1 md:mx-2 hover:scale-105 transition-all duration-300">
+                                    <div class="flex items-center mb-5 lg:mb-6 px-2 py-1">
+                                        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mr-4 lg:mr-5 flex-shrink-0">
+                                            <i class="fas fa-graduation-cap text-white text-sm lg:text-base"></i>
+                                        </div>
+                                        <h3 class="text-lg lg:text-xl font-semibold text-white leading-relaxed px-2 md:px-3">Training</h3>
+                                    </div>
+                                    <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-3 md:px-4 py-2">Positive reinforcement training builds trust and creates a well-behaved, happy pet.</p>
+                                </div>
+                                
+                                <div class="glass rounded-2xl p-6 md:p-7 lg:p-8 xl:p-9 my-2 md:my-3 lg:my-4 mx-1 md:mx-2 hover:scale-105 transition-all duration-300">
+                                    <div class="flex items-center mb-5 lg:mb-6 px-2 py-1">
+                                        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mr-4 lg:mr-5 flex-shrink-0">
+                                            <i class="fas fa-utensils text-white text-sm lg:text-base"></i>
+                                        </div>
+                                        <h3 class="text-lg lg:text-xl font-semibold text-white leading-relaxed px-2 md:px-3">Nutrition</h3>
+                                    </div>
+                                    <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-3 md:px-4 py-2">Proper nutrition tailored to your pet's age, size, and health needs is fundamental.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="tips" class="mb-10 lg:mb-14 px-2 md:px-4 py-4 md:py-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 lg:mb-10 leading-relaxed px-2 md:px-3">Expert Tips</h2>
+                            <div class="space-y-6 lg:space-y-8">
+                                <div class="flex items-start p-4 lg:p-6 mx-1 md:mx-2">
+                                    <div class="w-7 h-7 lg:w-8 lg:h-8 bg-primary-blue rounded-full flex items-center justify-center mr-4 lg:mr-5 mt-1 flex-shrink-0">
+                                        <span class="text-white font-bold text-xs lg:text-sm">1</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-base lg:text-lg font-semibold text-white mb-3 leading-relaxed px-1">Start Early</h4>
+                                        <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-1">Begin training and socialization as early as possible for the best results. Young pets are more adaptable and learn faster.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-4 lg:p-6 mx-1 md:mx-2">
+                                    <div class="w-7 h-7 lg:w-8 lg:h-8 bg-primary-green rounded-full flex items-center justify-center mr-4 lg:mr-5 mt-1 flex-shrink-0">
+                                        <span class="text-white font-bold text-xs lg:text-sm">2</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-base lg:text-lg font-semibold text-white mb-3 leading-relaxed px-1">Be Patient</h4>
+                                        <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-1">Every pet learns at their own pace. Patience and consistency are key to successful training and care.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-4 lg:p-6 mx-1 md:mx-2">
+                                    <div class="w-7 h-7 lg:w-8 lg:h-8 bg-primary-pink rounded-full flex items-center justify-center mr-4 lg:mr-5 mt-1 flex-shrink-0">
+                                        <span class="text-white font-bold text-xs lg:text-sm">3</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-base lg:text-lg font-semibold text-white mb-3 leading-relaxed px-1">Observe Changes</h4>
+                                        <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-1">Watch for changes in behavior, appetite, or energy levels. These can be early signs of health issues.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="conclusion" class="px-2 md:px-4 py-4 md:py-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 lg:mb-10 leading-relaxed px-2 md:px-3">Conclusion</h2>
+                            <p class="text-gray-300 text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 px-2 md:px-3">
+                                Caring for a pet is a rewarding journey that requires dedication, love, and knowledge. By following these guidelines and staying informed about best practices, you can ensure your furry friend lives a happy, healthy life.
+                            </p>
+                            <div class="glass rounded-2xl p-6 lg:p-8 bg-gradient-to-r from-primary-blue/10 to-primary-green/10 mx-1 md:mx-2 my-4">
+                                <p class="text-white font-medium mb-4 text-sm lg:text-base leading-relaxed px-2">
+                                    <i class="fas fa-lightbulb text-primary-yellow mr-2"></i>
+                                    Remember
+                                </p>
+                                <p class="text-gray-300 text-sm lg:text-base leading-relaxed px-2">
+                                    Every pet is unique. What works for one may not work for another. Always consult with your veterinarian for personalized advice.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tags and Categories -->
+<section class="py-8 md:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 my-8 md:my-10 lg:my-12">
+    <div class="max-w-6xl mx-auto">
+        <div class="glass-dark rounded-2xl p-6 md:p-8 lg:p-10 mx-2 md:mx-4 lg:mx-0 my-4 md:my-6">
+            <div class="flex flex-wrap items-center gap-3 lg:gap-5 px-2 md:px-4 py-2 md:py-3">
+                <span class="text-white font-medium text-sm lg:text-base leading-relaxed px-2 md:px-3 py-1">Tags:</span>
+                <span class="glass px-4 py-2 rounded-full text-xs lg:text-sm text-primary-blue leading-relaxed hover:bg-primary-blue/20 transition-colors">#petcare</span>
+                <span class="glass px-4 py-2 rounded-full text-xs lg:text-sm text-primary-green leading-relaxed hover:bg-primary-green/20 transition-colors">#@Model.Category.ToLower().Replace(" ", "")</span>
+                <span class="glass px-4 py-2 rounded-full text-xs lg:text-sm text-primary-pink leading-relaxed hover:bg-primary-pink/20 transition-colors">#tips</span>
+                <span class="glass px-4 py-2 rounded-full text-xs lg:text-sm text-primary-yellow leading-relaxed hover:bg-primary-yellow/20 transition-colors">#health</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Author Bio -->
+<section class="py-8 md:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 my-8">
+    <div class="max-w-6xl mx-auto">
+        <div class="glass-dark rounded-3xl p-4 md:p-6 lg:p-8 mx-4 md:mx-0">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+                <div class="flex-1 text-center sm:text-left">
+                    <h3 class="text-xl lg:text-2xl font-bold text-white mb-2 leading-relaxed px-1">@Model.Author</h3>
+                    <p class="text-primary-blue font-medium mb-3 text-sm lg:text-base leading-relaxed px-1">Pet Care Expert & Veterinarian</p>
+                    <p class="text-gray-300 mb-4 text-sm lg:text-base leading-relaxed px-1">
+                        Dr. @Model.Author has over 10 years of experience in veterinary medicine and pet care. She specializes in animal behavior and has helped thousands of pets and their families live happier, healthier lives.
+                    </p>
+                    <div class="flex justify-center sm:justify-start space-x-4">
+                        <a href="#" class="text-primary-blue hover:text-primary-green transition-colors">
+                            <i class="fab fa-twitter text-lg lg:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary-blue hover:text-primary-green transition-colors">
+                            <i class="fab fa-linkedin text-lg lg:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary-blue hover:text-primary-green transition-colors">
+                            <i class="fas fa-envelope text-lg lg:text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Articles -->
+<section class="py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 lg:px-8 xl:px-10 mt-16 md:mt-20 lg:mt-24 xl:mt-28 mb-20 md:mb-24 lg:mb-28 xl:mb-32">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10">
+        <div class="text-center mb-16 md:mb-20 lg:mb-24 xl:mb-28 px-6 md:px-8 lg:px-10 py-6 md:py-8 lg:py-10">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 md:mb-8 lg:mb-10 xl:mb-12 leading-relaxed px-4 md:px-6 lg:px-8 py-2 md:py-3 lg:py-4">
+                Related <span class="gradient-text">Articles</span>
+            </h2>
+            <p class="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 md:px-6 lg:px-8 py-2 md:py-3">
+                Explore more articles that might interest you and help you care for your beloved pets.
+            </p>
+        </div>
+        
+        @if (Model.RelatedArticles != null && Model.RelatedArticles.Any())
+        {
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12 xl:gap-14 px-4 md:px-6 lg:px-8 xl:px-10 py-6 md:py-8 lg:py-10">
+                @foreach (var article in Model.RelatedArticles)
+                {
+                    <article class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 mx-3 md:mx-4 lg:mx-2 xl:mx-0 my-4 md:my-5 lg:my-6 xl:my-8 shadow-lg hover:shadow-2xl p-2 md:p-3 lg:p-4">
+                        <div class="aspect-[4/3] overflow-hidden rounded-xl m-2 md:m-3">
+                            <img src="@article.ImageUrl" alt="@article.Title" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
+                        </div>
+                        <div class="p-6 md:p-7 lg:p-8 xl:p-10 space-y-5 md:space-y-6 lg:space-y-7">
+                            <div class="flex items-center justify-between mb-5 md:mb-6 lg:mb-7 px-2 md:px-3 lg:px-4 py-2 md:py-3">
+                                <span class="glass px-5 py-3 rounded-full text-xs lg:text-sm font-medium mb-3 inline-block leading-relaxed transition-colors duration-200
+                                    @(article.Category == "Training" ? "text-primary-green hover:bg-primary-green/20" : 
+                                      article.Category == "Health" ? "text-primary-blue hover:bg-primary-blue/20" :
+                                      article.Category == "Nutrition" ? "text-primary-yellow hover:bg-primary-yellow/20" :
+                                      article.Category == "Behavior" ? "text-primary-pink hover:bg-primary-pink/20" :
+                                      "text-primary-purple hover:bg-primary-purple/20")">
+                                    @article.Category
+                                </span>
+                                <span class="text-gray-400 text-xs md:text-sm px-2">@article.Date.ToString("MMM dd")</span>
+                            </div>
+                            <h3 class="text-base lg:text-lg xl:text-xl font-bold text-white mb-4 md:mb-5 lg:mb-6 leading-relaxed px-3 md:px-4 lg:px-5 py-2 md:py-3 hover:text-primary-blue transition-colors duration-200">
+                                @article.Title
+                            </h3>
+                            <p class="text-gray-400 text-xs lg:text-sm xl:text-base mb-6 md:mb-7 lg:mb-8 leading-relaxed px-3 md:px-4 lg:px-5 py-2 md:py-3 line-clamp-3">
+                                @article.Summary
+                            </p>
+                            <div class="flex items-center justify-between pt-5 md:pt-6 lg:pt-7 border-t border-white/10 px-3 md:px-4 lg:px-5 py-3 md:py-4 lg:py-5 mt-5 md:mt-6 lg:mt-7">
+                                <div class="flex items-center space-x-3 px-2 py-1">
+                                    <span class="text-gray-500 text-xs md:text-sm">@article.ReadTime min read</span>
+                                    <span class="text-gray-500 text-xs md:text-sm">•</span>
+                                    <span class="text-gray-500 text-xs md:text-sm">@article.Views views</span>
+                                </div>
+                                <a href="@Url.Action("BlogPost", "Home", new { id = article.Id })" 
+                                   class="text-primary-blue hover:text-primary-green transition-colors font-medium text-xs lg:text-sm xl:text-base leading-relaxed group px-3 py-2">
+                                    Read More <i class="fas fa-arrow-right ml-2 transition-transform duration-200 group-hover:translate-x-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-16 md:py-20 lg:py-24 xl:py-28 px-6 md:px-8 lg:px-10 xl:px-12">
+                <div class="glass-dark rounded-2xl p-10 md:p-14 lg:p-18 xl:p-22 mx-4 md:mx-6 lg:mx-8 xl:mx-0 my-6 md:my-8 lg:py-10">
+                    <div class="py-6 md:py-8 lg:py-10 px-4 md:px-6 lg:px-8">
+                        <i class="fas fa-newspaper text-5xl md:text-6xl lg:text-7xl text-gray-400 mb-8 md:mb-10 lg:mb-12"></i>
+                        <h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-6 md:mb-8 lg:mb-10 leading-relaxed px-4 md:px-6 lg:px-8 py-2 md:py-3">No Related Articles Found</h3>
+                        <p class="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed px-4 md:px-6 lg:px-8 xl:px-10 py-3 md:py-4 lg:py-5 mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto">
+                            We're working on finding more articles related to this topic. Check back soon!
+                        </p>
+                        <a href="@Url.Action("Blog", "Home")" 
+                           class="inline-flex items-center px-8 md:px-10 lg:px-12 py-4 md:py-5 lg:py-6 bg-gradient-to-r from-primary-blue to-primary-green rounded-full text-white font-medium hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-2xl mx-2 md:mx-4 my-2 md:my-3">
+                            Browse All Articles <i class="fas fa-arrow-right ml-3 md:ml-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reading progress tracking
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercentage = document.getElementById('progress-percentage');
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+                progressPercentage.textContent = Math.round(Math.min(scrollPercent, 100)) + '%';
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            
+            // Smooth scrolling for table of contents
+            const tocLinks = document.querySelectorAll('nav a[href^="#"]');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Social sharing functions
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+        }
+        
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                const button = event.target.closest('button');
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check text-white text-sm"></i>';
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+    </script>
+}
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #2979FF, #00E676, #FF80AB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @@keyframes gradient {
+        0%, 100% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(180deg); }
+    }
+    
+    @@keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .prose {
+        color: #d1d5db;
+    }
+    
+    .prose h2 {
+        color: #ffffff;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .prose p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Section spacing */
+    section {
+        scroll-margin-top: 100px;
+    }
+    
+    /* Content spacing improvements */
+    .content-spacing {
+        margin: 1rem 0;
+    }
+    
+    @@media (min-width: 768px) {
+        .content-spacing {
+            margin: 1.5rem 0;
+        }
+    }
+    
+    @@media (min-width: 1024px) {
+        .content-spacing {
+            margin: 2rem 0;
+        }
+    }
+    
+    /* Mobile optimizations */
+    @@media (max-width: 768px) {
+        .prose h2 {
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .prose p {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        
+        /* Better mobile spacing */
+        section {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+            margin-top: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+    }
+    
+    /* Better responsive text sizes */
+    @@media (max-width: 640px) {
+        .glass-dark {
+            backdrop-filter: blur(15px);
+        }
+        
+        /* Tighter spacing on very small screens */
+        section {
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+    }
+    
+    /* Improve scrolling on mobile */
+    @@media (max-width: 1024px) {
+        .sticky {
+            position: relative !important;
+            top: auto !important;
+        }
+    }
+    
+    /* Desktop improvements */
+    @@media (min-width: 1280px) {
+        section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+    }
+</style> 

@@ -24,6 +24,15 @@ namespace CarePet.Models
         
         public int Views { get; set; } = 0;
         
+        public string Summary { get; set; } = string.Empty;
+        
+        public int ReadTime { get; set; } = 5; // Minutes to read
+        
+        public List<string> Tags { get; set; } = new List<string>();
+        
+        // Related Articles for dynamic content
+        public List<BlogPost> RelatedArticles { get; set; } = new List<BlogPost>();
+        
         public string Excerpt => Content.Length > 150 ? Content.Substring(0, 150) + "..." : Content;
     }
 } 

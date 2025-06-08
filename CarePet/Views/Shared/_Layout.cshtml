@@ -45,8 +45,9 @@
                         <a asp-controller="Home" asp-action="Pets" class="nav-link-style">Our Pets</a>
                         <a asp-controller="Home" asp-action="Services" class="nav-link-style">Services</a>
                         <a asp-controller="Home" asp-action="Blog" class="nav-link-style">Blog</a>
-                        <a asp-controller="Home" asp-action="Gallery" class="nav-link-style">Gallery</a>
-                        <a asp-controller="Home" asp-action="FAQ" class="nav-link-style">FAQ</a>
+                        <a asp-controller="Home" asp-action="Testimonials" class="nav-link-style">Testimonials</a>
+                        <a asp-controller="Home" asp-action="AdoptionProcess" class="nav-link-style">Adoption Process</a>
+                        <a asp-controller="Home" asp-action="Volunteer" class="nav-link-style">Volunteer</a>
                         <a asp-controller="Home" asp-action="About" class="nav-link-style">About</a>
                         <a asp-controller="Home" asp-action="Contact" class="nav-link-style">Contact</a>
                     </div>
@@ -107,7 +108,7 @@
                      
                      <a asp-controller="Home" asp-action="Pets" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-green/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
                          <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                             <i class="fas fa-heart text-white text-lg"></i>
+                             <i class="fas fa-paw text-white text-lg"></i>
                          </div>
                          <div class="flex-1">
                              <h3 class="text-white font-semibold text-base">Our Pets</h3>
@@ -137,6 +138,50 @@
                          </div>
                          <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-yellow group-hover:translate-x-1 transition-all duration-300"></i>
                      </a>
+
+                     <a asp-controller="Home" asp-action="AdoptionProcess" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-heart text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Adoption Process</h3>
+                             <p class="text-gray-400 text-sm">How to adopt a pet</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+
+                     <a asp-controller="Home" asp-action="FAQ" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-question text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">FAQ</h3>
+                             <p class="text-gray-400 text-sm">Frequently asked questions</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+
+                     <a asp-controller="Home" asp-action="Testimonials" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-paw text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Testimonials</h3>
+                             <p class="text-gray-400 text-sm">Happy moments & adoptions</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
+
+                     <a asp-controller="Home" asp-action="Volunteer" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                             <i class="fas fa-heart text-white text-lg"></i>
+                         </div>
+                         <div class="flex-1">
+                             <h3 class="text-white font-semibold text-base">Volunteer</h3>
+                             <p class="text-gray-400 text-sm">Help us save pets</p>
+                         </div>
+                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
+                     </a>
                      
                      <a asp-controller="Home" asp-action="Blog" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-orange/20 hover:to-primary-yellow/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
                          <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -149,17 +194,6 @@
                          <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-orange group-hover:translate-x-1 transition-all duration-300"></i>
                      </a>
 
-                     <a asp-controller="Home" asp-action="Gallery" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-blue/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                         <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-blue rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                             <i class="fas fa-images text-white text-lg"></i>
-                         </div>
-                         <div class="flex-1">
-                             <h3 class="text-white font-semibold text-base">Gallery</h3>
-                             <p class="text-gray-400 text-sm">Happy moments & adoptions</p>
-                         </div>
-                         <i class="fas fa-chevron-right text-gray-500 group-hover:text-primary-purple group-hover:translate-x-1 transition-all duration-300"></i>
-                     </a>
-                     
                      <a asp-controller="Home" asp-action="Contact" class="mobile-nav-item group flex items-center p-4 rounded-2xl glass hover:bg-gradient-to-r hover:from-primary-purple/20 hover:to-primary-pink/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
                          <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-pink rounded-xl mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                              <i class="fas fa-envelope text-white text-lg"></i>
@@ -231,7 +265,7 @@
                      </div>
                      
                      <div class="text-center">
-                         <p class="text-gray-400 text-xs">&copy; 2024 CarePet. All rights reserved.</p>
+                         <p class="text-gray-400 text-xs">&copy; 2024 CarePet. All rights Doorzy Tech.</p>
                      </div>
                  </div>
              </div>
@@ -279,7 +313,7 @@
                         <li><a asp-controller="Home" asp-action="Pets" class="text-gray-300 hover:text-white transition-colors">Our Pets</a></li>
                         <li><a asp-controller="Home" asp-action="Services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
                         <li><a asp-controller="Home" asp-action="Blog" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                        <li><a asp-controller="Home" asp-action="Gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a asp-controller="Home" asp-action="AdoptionProcess" class="text-gray-300 hover:text-white transition-colors">Adoption Process</a></li>
                         <li><a asp-controller="Home" asp-action="FAQ" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
                     </ul>
                 </div>

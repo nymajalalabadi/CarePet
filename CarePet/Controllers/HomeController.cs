@@ -138,13 +138,15 @@ public class HomeController : Controller
         {
             return NotFound();
         }
+        
+        // Add related articles (excluding current post)
+        var allPosts = GetSampleBlogPosts();
+        post.RelatedArticles = allPosts
+            .Where(p => p.Id != id)
+            .Take(3)
+            .ToList();
+        
         return View(post);
-    }
-
-    public IActionResult Gallery()
-    {
-        var photos = GetSampleGalleryPhotos();
-        return View(photos);
     }
 
     public IActionResult FAQ()
@@ -163,6 +165,7 @@ public class HomeController : Controller
     {
         return View();
     }
+
 
     public IActionResult Volunteer()
     {
@@ -191,12 +194,12 @@ public class HomeController : Controller
     {
         return new List<Pet>
         {
-            new Pet { Id = 1, Name = "Buddy", Type = "Dog", Breed = "Golden Retriever", Age = 3, Color = "Golden", Gender = "Male", ImageUrl = "https://images.unsplash.com/photo-1552053831-71594a27632d?w=500", Description = "Friendly and energetic dog, loves playing fetch! He's great with kids and other pets. Buddy enjoys long walks, playing in the yard, and cuddling on the couch. He's house-trained and knows basic commands like sit, stay, and come.", IsAvailable = true },
-            new Pet { Id = 2, Name = "Luna", Type = "Cat", Breed = "Persian", Age = 2, Color = "White", Gender = "Female", ImageUrl = "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=500", Description = "Calm and gentle cat, perfect for families. Luna loves to be petted and will purr contentedly in your lap. She's very clean, uses her litter box consistently, and gets along well with children. She enjoys playing with feather toys and napping in sunny spots.", IsAvailable = true },
-            new Pet { Id = 3, Name = "Charlie", Type = "Dog", Breed = "Labrador", Age = 1, Color = "Brown", Gender = "Male", ImageUrl = "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500", Description = "Young and playful puppy, great with kids. Charlie is full of energy and loves to learn new tricks. He's very social and enjoys meeting new people and dogs. Currently learning house training and basic obedience commands.", IsAvailable = true },
-            new Pet { Id = 4, Name = "Mia", Type = "Cat", Breed = "Siamese", Age = 4, Color = "Cream", Gender = "Female", ImageUrl = "https://images.unsplash.com/photo-1513245543132-31f507417b26?w=500", Description = "Intelligent and vocal cat, very social. Mia loves to 'talk' to her humans and will follow you around the house. She's very affectionate and enjoys interactive play. She would do best as an only cat or with one other calm cat.", IsAvailable = true },
-            new Pet { Id = 5, Name = "Max", Type = "Dog", Breed = "German Shepherd", Age = 5, Color = "Black & Tan", Gender = "Male", ImageUrl = "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=500", Description = "Loyal and protective, well-trained. Max is a mature dog who would make an excellent companion for an active family. He knows many commands, walks well on a leash, and is very protective of his family. He would do best with older children.", IsAvailable = true },
-            new Pet { Id = 6, Name = "Bella", Type = "Cat", Breed = "Maine Coon", Age = 3, Color = "Orange", Gender = "Female", ImageUrl = "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=500", Description = "Large and gentle cat, very affectionate. Bella is a sweet, laid-back cat who loves attention and gentle petting. She gets along well with other cats and would make a wonderful addition to any family. She enjoys playing with toys and watching birds from the window.", IsAvailable = true },
+            new Pet { Id = 1, Name = "Buddy", Type = "Dog", Breed = "Golden Retriever", Age = 3, Color = "Golden", Gender = "Male", ImageUrl = "/image/pets/dog7.png", Description = "Friendly and energetic dog, loves playing fetch! He's great with kids and other pets. Buddy enjoys long walks, playing in the yard, and cuddling on the couch. He's house-trained and knows basic commands like sit, stay, and come.", IsAvailable = true },
+            new Pet { Id = 2, Name = "Luna", Type = "Cat", Breed = "Persian", Age = 2, Color = "White", Gender = "Female", ImageUrl = "/image/pets/dog8.png", Description = "Calm and gentle cat, perfect for families. Luna loves to be petted and will purr contentedly in your lap. She's very clean, uses her litter box consistently, and gets along well with children. She enjoys playing with feather toys and napping in sunny spots.", IsAvailable = true },
+            new Pet { Id = 3, Name = "Charlie", Type = "Dog", Breed = "Labrador", Age = 1, Color = "Brown", Gender = "Male", ImageUrl = "/image/pets/dog3.png", Description = "Young and playful puppy, great with kids. Charlie is full of energy and loves to learn new tricks. He's very social and enjoys meeting new people and dogs. Currently learning house training and basic obedience commands.", IsAvailable = true },
+            new Pet { Id = 4, Name = "Mia", Type = "Cat", Breed = "Siamese", Age = 4, Color = "Cream", Gender = "Female", ImageUrl = "/image/pets/dog4.png", Description = "Intelligent and vocal cat, very social. Mia loves to 'talk' to her humans and will follow you around the house. She's very affectionate and enjoys interactive play. She would do best as an only cat or with one other calm cat.", IsAvailable = true },
+            new Pet { Id = 5, Name = "Max", Type = "Dog", Breed = "German Shepherd", Age = 5, Color = "Black & Tan", Gender = "Male", ImageUrl = "/image/pets/dog6.png", Description = "Loyal and protective, well-trained. Max is a mature dog who would make an excellent companion for an active family. He knows many commands, walks well on a leash, and is very protective of his family. He would do best with older children.", IsAvailable = true },
+            new Pet { Id = 6, Name = "Bella", Type = "Cat", Breed = "Maine Coon", Age = 3, Color = "Orange", Gender = "Female", ImageUrl = "/image/pets/dog5.png", Description = "Large and gentle cat, very affectionate. Bella is a sweet, laid-back cat who loves attention and gentle petting. She gets along well with other cats and would make a wonderful addition to any family. She enjoys playing with toys and watching birds from the window.", IsAvailable = true },
         };
     }
 
@@ -217,10 +220,84 @@ public class HomeController : Controller
     {
         return new List<BlogPost>
         {
-            new BlogPost { Id = 1, Title = "How to Choose the Right Pet for Your Family", Content = "Choosing a pet is a big decision that affects your entire family. Consider factors like living space, time commitment, allergies, and lifestyle when making this important choice.", Author = "Dr. Sarah Johnson", Date = DateTime.Now.AddDays(-7), ImageUrl = "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=500", Category = "Pet Care" },
-            new BlogPost { Id = 2, Title = "Essential Pet Care Tips for New Owners", Content = "Being a new pet owner can be overwhelming. Here are essential tips for feeding, grooming, training, and keeping your new companion healthy and happy.", Author = "Mark Wilson", Date = DateTime.Now.AddDays(-14), ImageUrl = "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=500", Category = "Training" },
-            new BlogPost { Id = 3, Title = "The Benefits of Pet Adoption", Content = "Adopting a pet from a shelter not only saves a life but also brings numerous benefits to your family. Learn about the advantages of choosing adoption over buying.", Author = "Emily Chen", Date = DateTime.Now.AddDays(-21), ImageUrl = "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500", Category = "Adoption" },
-            new BlogPost { Id = 4, Title = "Understanding Pet Behavior and Body Language", Content = "Learning to read your pet's body language is crucial for building a strong bond. Discover what your pet is trying to communicate through their actions and expressions.", Author = "Dr. Michael Brown", Date = DateTime.Now.AddDays(-28), ImageUrl = "https://images.unsplash.com/photo-1515772361274-6eeca0019241?w=500", Category = "Behavior" },
+            new BlogPost { 
+                Id = 1, 
+                Title = "How to Choose the Right Pet for Your Family", 
+                Content = "Choosing a pet is a big decision that affects your entire family. Consider factors like living space, time commitment, allergies, and lifestyle when making this important choice. Different pets have different needs, and understanding these requirements is crucial for a successful adoption. Dogs require daily exercise and social interaction, while cats are more independent but still need attention and care. Consider your work schedule, family dynamics, and long-term commitment before making this important decision.", 
+                Summary = "A comprehensive guide to selecting the perfect pet that matches your family's lifestyle, living situation, and long-term commitment capabilities.",
+                Author = "Dr. Sarah Johnson", 
+                Date = DateTime.Now.AddDays(-7), 
+                ImageUrl = "/image/pets/dog1.png", 
+                Category = "Pet Care",
+                ReadTime = 8,
+                Views = 1245,
+                Tags = new List<string> { "pet selection", "family pets", "adoption guide" }
+            },
+            new BlogPost { 
+                Id = 2, 
+                Title = "Essential Pet Care Tips for New Owners", 
+                Content = "Being a new pet owner can be overwhelming. Here are essential tips for feeding, grooming, training, and keeping your new companion healthy and happy. Establishing routines is crucial for your pet's wellbeing. Create feeding schedules, exercise routines, and regular vet checkups. Proper nutrition, regular grooming, and consistent training will help your pet adjust to their new home and develop into a well-behaved family member.", 
+                Summary = "Complete beginner's guide covering feeding, grooming, training, and health care essentials for new pet owners.",
+                Author = "Mark Wilson", 
+                Date = DateTime.Now.AddDays(-14), 
+                ImageUrl = "/image/pets/dog2.png", 
+                Category = "Training",
+                ReadTime = 6,
+                Views = 892,
+                Tags = new List<string> { "new owners", "pet care basics", "training tips" }
+            },
+            new BlogPost { 
+                Id = 3, 
+                Title = "The Benefits of Pet Adoption", 
+                Content = "Adopting a pet from a shelter not only saves a life but also brings numerous benefits to your family. Learn about the advantages of choosing adoption over buying. Shelter pets are often already house-trained and socialized. Additionally, adoption fees typically include vaccinations, spaying/neutering, and microchipping, providing excellent value. By adopting, you're also supporting local animal welfare efforts and helping reduce pet overpopulation.", 
+                Summary = "Discover the many advantages of pet adoption for both families and animals, including cost savings and social benefits.",
+                Author = "Emily Chen", 
+                Date = DateTime.Now.AddDays(-21), 
+                ImageUrl = "/image/pets/dog3.png", 
+                Category = "Adoption",
+                ReadTime = 5,
+                Views = 567,
+                Tags = new List<string> { "adoption", "shelter pets", "animal welfare" }
+            },
+            new BlogPost { 
+                Id = 4, 
+                Title = "Understanding Pet Behavior and Body Language", 
+                Content = "Learning to read your pet's body language is crucial for building a strong bond. Discover what your pet is trying to communicate through their actions and expressions. Dogs wag their tails when happy but also when nervous. Cats purr when content but may also purr when stressed. Understanding these subtle differences helps you respond appropriately to your pet's needs and strengthens your relationship.", 
+                Summary = "Learn to interpret your pet's body language and behavioral cues to strengthen your bond and improve communication.",
+                Author = "Dr. Michael Brown", 
+                Date = DateTime.Now.AddDays(-28), 
+                ImageUrl = "/image/pets/dog4.png", 
+                Category = "Behavior",
+                ReadTime = 7,
+                Views = 723,
+                Tags = new List<string> { "pet behavior", "body language", "communication" }
+            },
+            new BlogPost { 
+                Id = 5, 
+                Title = "Pet Nutrition: Feeding Your Companion Right", 
+                Content = "Proper nutrition is fundamental to your pet's health and longevity. Understanding nutritional needs, reading food labels, and establishing healthy feeding habits will keep your pet in optimal condition. Different life stages require different nutritional approaches, and certain health conditions may require special diets.", 
+                Summary = "Essential guide to pet nutrition covering food selection, feeding schedules, and nutritional requirements for optimal health.",
+                Author = "Dr. Jennifer Martinez", 
+                Date = DateTime.Now.AddDays(-35), 
+                ImageUrl =  "/image/pets/dog5.png", 
+                Category = "Health",
+                ReadTime = 9,
+                Views = 934,
+                Tags = new List<string> { "nutrition", "feeding", "pet health" }
+            },
+            new BlogPost { 
+                Id = 6, 
+                Title = "Creating a Safe Home Environment for Pets", 
+                Content = "Pet-proofing your home is essential for keeping your companion safe. Learn about common household hazards, toxic plants, and how to create secure spaces for your pets. Remove dangerous items, secure cabinets with chemicals, and ensure your pet has a comfortable, safe space to rest and play.", 
+                Summary = "Comprehensive guide to pet-proofing your home and creating a safe, comfortable environment for your furry friends.",
+                Author = "Lisa Thompson", 
+                Date = DateTime.Now.AddDays(-42), 
+                ImageUrl = "/image/pets/dog6.png", 
+                Category = "Safety",
+                ReadTime = 6,
+                Views = 445,
+                Tags = new List<string> { "pet safety", "home preparation", "pet proofing" }
+            }
         };
     }
 

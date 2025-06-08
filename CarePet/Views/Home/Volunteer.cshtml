@@ -1,0 +1,525 @@
+@model CarePet.Models.VolunteerApplication
+@{
+    ViewData["Title"] = "Volunteer Opportunities";
+}
+
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Volunteer <span class="gradient-text">Opportunities</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Join our passionate team of volunteers and make a real difference in the lives of animals. Whether you have an hour a week or several days a month, there's a perfect opportunity waiting for you.
+            </p>
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Make a <span class="gradient-text">Difference</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        Volunteering with CarePet is more than just giving your time - it's about creating meaningful connections and transforming lives. Every hour you contribute helps save and improve the lives of animals in need.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        From hands-on pet care to administrative support, find the perfect volunteer role that matches your skills, interests, and schedule. Join our amazing community of animal lovers today.
+                    </p>
+                    
+                    <!-- Impact Statistics -->
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-users text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">200+</h3>
+                            <p class="text-gray-400 text-sm">Active Volunteers</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-clock text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">10K+</h3>
+                            <p class="text-gray-400 text-sm">Hours This Year</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-paw text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">500+</h3>
+                            <p class="text-gray-400 text-sm">Pets Helped</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-heart text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-1">300+</h3>
+                            <p class="text-gray-400 text-sm">Successful Adoptions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="/image/pets/DogFunny.png" 
+                         alt="Volunteers caring for animals" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Opportunities -->
+<section class="pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ways to <span class="gradient-text">Help</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Choose from a variety of volunteer opportunities that match your interests, skills, and availability.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Pet Care -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-heart text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Pet Care</h3>
+                <p class="text-gray-300 mb-6">
+                    Help with feeding, grooming, exercise, and socialization. Spend quality time with our animals and help them prepare for their forever homes.
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Daily care activities</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Exercise and playtime</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Socialization training</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-blue font-medium">
+                        4-6 hours/week
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Administrative Support -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-laptop text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Administrative Support</h3>
+                <p class="text-gray-300 mb-6">
+                    Assist with office tasks, data entry, phone calls, and adoption paperwork. Help keep our operations running smoothly.
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Data entry and filing</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Phone support</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Adoption coordination</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-green font-medium">
+                        3-5 hours/week
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Event Support -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-calendar-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Event Support</h3>
+                <p class="text-gray-300 mb-6">
+                    Help organize and run adoption events, fundraisers, and community outreach programs. Be the face of our organization!
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Adoption events</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Fundraising activities</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Community outreach</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-pink font-medium">
+                        Weekend events
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Transportation -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-car text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Transportation</h3>
+                <p class="text-gray-300 mb-6">
+                    Help transport pets to vet appointments, adoption events, or between facilities. Your car and compassion make a huge difference.
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Vet appointment rides</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Event transportation</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Emergency rescues</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-yellow font-medium">
+                        Flexible schedule
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Foster Care -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-purple to-primary-pink rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-home text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Foster Care</h3>
+                <p class="text-gray-300 mb-6">
+                    Provide temporary homes for pets in need. Whether short-term or long-term, fostering saves lives and creates space for more rescues.
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Temporary pet care</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Recovery support</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Socialization help</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-purple font-medium">
+                        Varies by need
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Special Skills -->
+            <div class="glass-dark rounded-3xl p-8 hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-green rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-tools text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Special Skills</h3>
+                <p class="text-gray-300 mb-6">
+                    Use your professional skills to help our cause. From photography to web design, construction to veterinary care - we need you!
+                </p>
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Photography/videography</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Marketing/social media</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-primary-green mr-2"></i>
+                        <span>Construction/maintenance</span>
+                    </li>
+                </ul>
+                <div class="flex items-center justify-between">
+                    <span class="glass px-3 py-1 rounded-full text-xs text-primary-blue font-medium">
+                        Project-based
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Application Form -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Join Our <span class="gradient-text">Team</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Ready to make a difference? Fill out our volunteer application and we'll get back to you within 48 hours.
+            </p>
+        </div>
+        
+        <div class="glass-dark rounded-3xl p-8 md:p-12">
+            <form asp-controller="Home" asp-action="Volunteer" method="post" class="space-y-6">
+                <!-- Personal Information -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="FirstName" class="block text-white font-medium mb-2">First Name *</label>
+                        <input asp-for="FirstName" type="text" required class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                        <span asp-validation-for="FirstName" class="text-red-400 text-sm"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="LastName" class="block text-white font-medium mb-2">Last Name *</label>
+                        <input asp-for="LastName" type="text" required class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                        <span asp-validation-for="LastName" class="text-red-400 text-sm"></span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="Email" class="block text-white font-medium mb-2">Email Address *</label>
+                        <input asp-for="Email" type="email" required class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                        <span asp-validation-for="Email" class="text-red-400 text-sm"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="Phone" class="block text-white font-medium mb-2">Phone Number *</label>
+                        <input asp-for="Phone" type="tel" required class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                        <span asp-validation-for="Phone" class="text-red-400 text-sm"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="Address" class="block text-white font-medium mb-2">Address</label>
+                    <input asp-for="Address" type="text" class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                </div>
+                
+                <div>
+                    <label for="DateOfBirth" class="block text-white font-medium mb-2">Date of Birth</label>
+                    <input asp-for="DateOfBirth" type="date" class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                </div>
+                
+                <!-- Availability -->
+                <div>
+                    <label for="Availability" class="block text-white font-medium mb-2">When are you available? *</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Monday" class="mr-2">
+                            <span class="text-white">Monday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Tuesday" class="mr-2">
+                            <span class="text-white">Tuesday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Wednesday" class="mr-2">
+                            <span class="text-white">Wednesday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Thursday" class="mr-2">
+                            <span class="text-white">Thursday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Friday" class="mr-2">
+                            <span class="text-white">Friday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Saturday" class="mr-2">
+                            <span class="text-white">Saturday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Sunday" class="mr-2">
+                            <span class="text-white">Sunday</span>
+                        </label>
+                        <label class="glass px-4 py-3 rounded-lg cursor-pointer hover:bg-white/10 transition-all duration-200">
+                            <input type="checkbox" name="Availability" value="Weekends" class="mr-2">
+                            <span class="text-white">Weekends Only</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div>
+                    <label for="Experience" class="block text-white font-medium mb-2">Pet Experience</label>
+                    <textarea asp-for="Experience" rows="4" placeholder="Tell us about your experience with pets..." class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 resize-none"></textarea>
+                </div>
+                
+                <div>
+                    <label for="WhyVolunteer" class="block text-white font-medium mb-2">Why do you want to volunteer with us? *</label>
+                    <textarea asp-for="WhyVolunteer" rows="4" required placeholder="Share your motivation..." class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 resize-none"></textarea>
+                    <span asp-validation-for="WhyVolunteer" class="text-red-400 text-sm"></span>
+                </div>
+                
+                <div>
+                    <label for="Skills" class="block text-white font-medium mb-2">Special Skills or Talents</label>
+                    <textarea asp-for="Skills" rows="3" placeholder="Any special skills that might help us?" class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0 resize-none"></textarea>
+                </div>
+                
+                <!-- Emergency Contact -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="EmergencyContactName" class="block text-white font-medium mb-2">Emergency Contact Name</label>
+                        <input asp-for="EmergencyContactName" type="text" class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                    </div>
+                    
+                    <div>
+                        <label for="EmergencyContactPhone" class="block text-white font-medium mb-2">Emergency Contact Phone</label>
+                        <input asp-for="EmergencyContactPhone" type="tel" class="w-full glass px-4 py-3 rounded-lg bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                    </div>
+                </div>
+                
+                <!-- Terms Agreement -->
+                <div class="flex items-start">
+                    <input asp-for="AcceptTerms" type="checkbox" required class="mt-1 mr-3 rounded border-gray-300 text-primary-blue focus:ring-primary-blue">
+                    <label for="AcceptTerms" class="text-gray-300">
+                        I agree to the <a asp-controller="Home" asp-action="Terms" class="text-primary-blue hover:text-primary-green transition-colors">Terms and Conditions</a> and understand the responsibilities of volunteering with CarePet. *
+                    </label>
+                </div>
+                <span asp-validation-for="AcceptTerms" class="text-red-400 text-sm block"></span>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-primary-blue to-primary-purple px-8 py-4 rounded-full text-white font-semibold hover:from-primary-purple hover:to-primary-blue transition-all duration-300">
+                    Submit Volunteer Application
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Benefits -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Volunteer <span class="gradient-text">Benefits</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Volunteering isn't just about giving back - you'll gain valuable experiences and benefits too!
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Skill Development</h3>
+                <p class="text-gray-300">Learn new skills in animal care, customer service, and teamwork.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Community</h3>
+                <p class="text-gray-300">Join a supportive community of like-minded animal lovers.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-certificate text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Recognition</h3>
+                <p class="text-gray-300">Receive volunteer certificates and appreciation awards.</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-green rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-heart text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Fulfillment</h3>
+                <p class="text-gray-300">Experience the joy of making a real difference in animals' lives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation and enhancement
+            const form = document.querySelector('form');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            // Enhance checkbox styling
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const label = this.closest('label');
+                    if (this.checked) {
+                        label.classList.add('bg-primary-blue/20', 'border-primary-blue');
+                    } else {
+                        label.classList.remove('bg-primary-blue/20', 'border-primary-blue');
+                    }
+                });
+            });
+            
+            // Form submission handling
+            form.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+                submitBtn.disabled = true;
+            });
+        });
+    </script>
+}
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, #2979FF, #00E676, #FF80AB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+    }
+    
+    .sharp-shadow {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    input:focus,
+    textarea:focus {
+        outline: none;
+    }
+    
+    label {
+        transition: all 0.3s ease;
+    }
+    
+    input[type="checkbox"] {
+        accent-color: #2979FF;
+    }
+</style> 

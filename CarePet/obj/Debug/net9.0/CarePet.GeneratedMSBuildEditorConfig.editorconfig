@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG9wdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Project/Cursor/CarePet/CarePet/Views/Home/AdoptionProcess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG9wdGlvblByb2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project/Cursor/CarePet/CarePet/Views/Home/AdoptionSuccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG9wdGlvblN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Project/Cursor/CarePet/CarePet/Views/Home/FAQ.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVEuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project/Cursor/CarePet/CarePet/Views/Home/Gallery.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project/Cursor/CarePet/CarePet/Views/Home/Index.cshtml]

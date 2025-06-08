@@ -1,190 +1,433 @@
 @model CarePet.Models.Pet
 @{
-    ViewData["Title"] = $"Application Submitted - {Model.Name}";
+    ViewData["Title"] = "Adoption Success";
 }
 
-<!-- Success Section -->
 <section class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center">
-        <!-- Success Animation -->
-        <div class="mb-12">
-            <div class="w-32 h-32 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
-                <i class="fas fa-check text-white text-6xl"></i>
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <div class="w-24 h-24 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl animate-bounce">
+                <i class="fas fa-check text-white text-4xl"></i>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Application <span class="gradient-text">Submitted!</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Adoption <span class="gradient-text">Successful</span>!
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-                Thank you for your interest in adopting <span class="text-primary-blue font-semibold">@Model.Name</span>!
-                We've received your application and will review it carefully.
+            @if (Model != null)
+            {
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+                    Congratulations! You've successfully started the adoption process for <span class="text-primary-green font-semibold">@Model.Name</span>. 
+                    Your new family member is waiting to meet you!
+                </p>
+                <div class="glass-dark rounded-2xl p-6 max-w-md mx-auto">
+                    <img src="@Model.ImageUrl" alt="@Model.Name" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
+                    <h3 class="text-2xl font-bold text-white mb-2">@Model.Name</h3>
+                    <p class="text-gray-300">@Model.Breed • @Model.Age years old</p>
+                </div>
+            }
+            else
+            {
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Celebrating the beautiful journeys of pets who found their forever homes and the families who opened their hearts to unconditional love.
+                </p>
+            }
+        </div>
+
+        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    @if (Model != null)
+                    {
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            What Happens <span class="gradient-text">Next</span>?
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Your adoption application has been submitted successfully! Our team will review your application and contact you within 24-48 hours to schedule a meet-and-greet with @Model.Name.
+                        </p>
+                        <p class="text-lg text-gray-300">
+                            During this time, we'll verify your references and prepare everything needed for a smooth transition. Get ready to welcome your new family member home!
+                        </p>
+                    }
+                    else
+                    {
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            Every Adoption is a <span class="gradient-text">Victory</span>
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Behind every adoption is a heartwarming story of transformation, love, and new beginnings. These success stories showcase the incredible bond between pets and their families.
+                        </p>
+                        <p class="text-lg text-gray-300">
+                            From rescue to recovery, from shelter to sanctuary - witness the amazing journeys that prove how adoption changes lives, both human and furry.
+                        </p>
+                    }
+                    
+                    @if (Model != null)
+                    {
+                        <!-- Next Steps Timeline -->
+                        <div class="mt-8 space-y-4">
+                            <h3 class="text-xl font-bold text-white mb-4">Next Steps:</h3>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary-green rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-white text-sm"></i>
+                                </div>
+                                <span class="text-gray-300">Application submitted</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-sm">2</span>
+                                </div>
+                                <span class="text-gray-300">Application review (24-48 hours)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary-purple rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-sm">3</span>
+                                </div>
+                                <span class="text-gray-300">Meet & greet with @Model.Name</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary-pink rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white font-bold text-sm">4</span>
+                                </div>
+                                <span class="text-gray-300">Home visit & final approval</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary-yellow rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-heart text-white text-sm"></i>
+                                </div>
+                                <span class="text-gray-300">Welcome @Model.Name home!</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Success Statistics -->
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-heart text-white text-lg"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-1">2,500+</h3>
+                                <p class="text-gray-400 text-sm">Successful Adoptions</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-home text-white text-lg"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-1">99%</h3>
+                                <p class="text-gray-400 text-sm">Happy Forever Homes</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-paw text-white text-lg"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-1">15</h3>
+                                <p class="text-gray-400 text-sm">Years of Service</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary-purple to-primary-pink rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-award text-white text-lg"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-1">50+</h3>
+                                <p class="text-gray-400 text-sm">Awards Received</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="relative">
+                    <img src="/image/pets/pet1.png" 
+                         alt="Happy adopted pets with their families" 
+                         class="rounded-2xl w-full h-96 object-cover animate-float" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories Grid -->
+<section class="py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-20 lg:mb-24">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10">
+                Recent <span class="gradient-text">Success Stories</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Meet some of our recent success stories and see how adoption has transformed lives
             </p>
         </div>
-
-        <!-- Pet Info Card -->
-        <div class="glass-dark rounded-3xl p-8 mb-12">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="w-48 h-48 rounded-full overflow-hidden sharp-shadow">
-                    <img src="@Model.ImageUrl" alt="@Model.Name" class="w-full h-full object-cover" />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+            <!-- Success Story 1 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=300&fit=crop" alt="Luna and Jennifer" class="w-full h-full object-cover" />
                 </div>
-                <div class="text-center md:text-left">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">@Model.Name</h2>
-                    <p class="text-xl text-gray-300 mb-6">
-                        @Model.Breed • @Model.Age year@(Model.Age != 1 ? "s" : "") old • @Model.Gender
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-green font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">December 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Luna & Jennifer</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        After spending 8 months in our shelter, Luna found her perfect match with Jennifer, a teacher who was looking for a loyal companion. Their bond was instant and beautiful.
                     </p>
-                    <p class="text-lg text-gray-400">
-                        We're excited that you want to give @Model.Name a loving forever home!
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user mr-2 text-primary-blue"></i>
+                            <span class="text-gray-300 text-sm">Jennifer M.</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-paw mr-1"></i>
+                            <span>Golden Retriever</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-green pl-3 mb-4">
+                        "Luna has brought so much joy into my life. She's not just a pet, she's family."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Success Story 2 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop" alt="Max and the Johnson Family" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-blue font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">November 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Max & The Johnsons</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Max was a shy rescue cat who blossomed with the Johnson family. Their patience and love helped him become the confident, playful cat he was meant to be.
                     </p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-users mr-2 text-primary-green"></i>
+                            <span class="text-gray-300 text-sm">Johnson Family</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-cat mr-1"></i>
+                            <span>Maine Coon</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-blue pl-3 mb-4">
+                        "Max has taught our children about compassion and responsibility. He's perfect for our family."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Success Story 3 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop" alt="Bella and Robert" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-pink font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">October 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Bella & Robert</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Senior dog Bella found a loving retirement home with Robert, a retiree who wanted a calm companion. Their daily walks have become the highlight of both their days.
+                    </p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user mr-2 text-primary-pink"></i>
+                            <span class="text-gray-300 text-sm">Robert K.</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-paw mr-1"></i>
+                            <span>Labrador Mix</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-pink pl-3 mb-4">
+                        "Bella and I understand each other perfectly. We're both enjoying our golden years together."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Success Story 4 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&h=300&fit=crop" alt="Charlie and Emma" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-yellow font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">September 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Charlie & Emma</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Charlie was rescued from difficult conditions and needed special care. Emma, a veterinary nurse, provided the medical attention and love he needed to thrive.
+                    </p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user mr-2 text-primary-yellow"></i>
+                            <span class="text-gray-300 text-sm">Emma S.</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-paw mr-1"></i>
+                            <span>Border Collie</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-yellow pl-3 mb-4">
+                        "Charlie's recovery has been incredible. He's shown me the true meaning of resilience and love."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Success Story 5 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop" alt="Milo and Sarah" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-purple font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">August 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Milo & Sarah</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Milo, a playful kitten with special needs, found his perfect match with Sarah, who specializes in caring for animals with disabilities. Their bond is truly inspiring.
+                    </p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user mr-2 text-primary-purple"></i>
+                            <span class="text-gray-300 text-sm">Sarah T.</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-cat mr-1"></i>
+                            <span>Special Needs</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-purple pl-3 mb-4">
+                        "Milo proves every day that special needs pets have so much love to give. He's my little miracle."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Success Story 6 -->
+            <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 sharp-shadow">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?w=400&h=300&fit=crop" alt="Rocky and the Martinez Family" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 md:p-7 lg:p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="glass px-3 py-1 rounded-full text-xs text-primary-orange font-medium">
+                            <i class="fas fa-heart mr-1"></i>Success Story
+                        </span>
+                        <span class="ml-3 text-gray-400 text-sm">July 2023</span>
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Rocky & Martinez Family</h3>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Rocky was returned to us twice before finding his forever home with the Martinez family, who understood his energy and gave him the active lifestyle he needed.
+                    </p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-users mr-2 text-primary-orange"></i>
+                            <span class="text-gray-300 text-sm">Martinez Family</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-paw mr-1"></i>
+                            <span>German Shepherd</span>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-gray-400 italic text-sm border-l-2 border-primary-orange pl-3 mb-4">
+                        "Rocky needed a family that could match his energy. Now he's the perfect adventure companion for our kids."
+                    </blockquote>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Next Steps -->
-        <div class="glass-dark rounded-3xl p-8 md:p-12 mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">
-                What <span class="gradient-text">Happens Next?</span>
+<!-- Call to Action -->
+<section class="py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+        <div class="glass-dark rounded-3xl p-10 md:p-14 lg:p-18 text-center">
+            <div class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-primary-green to-primary-blue rounded-2xl flex items-center justify-center mx-auto mb-8 md:mb-10 shadow-xl">
+                <i class="fas fa-heart text-white text-2xl md:text-3xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10">
+                Ready to Create Your Own <span class="gradient-text">Success Story</span>?
             </h2>
+            <p class="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed">
+                There are many wonderful pets waiting for their forever homes. Start your adoption journey today and become part of our success story family.
+            </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-white font-bold text-2xl">1</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Application Review</h3>
-                    <p class="text-gray-300">
-                        Our adoption team will carefully review your application within 2-3 business days.
-                    </p>
-                </div>
-
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-white font-bold text-2xl">2</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Contact & Interview</h3>
-                    <p class="text-gray-300">
-                        If approved, we'll contact you to schedule a phone interview and potential meet-and-greet.
-                    </p>
-                </div>
-
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-white font-bold text-2xl">3</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Home Visit</h3>
-                    <p class="text-gray-300">
-                        A home visit will be scheduled to ensure @Model.Name's safety and comfort.
-                    </p>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center">
+                <a asp-controller="Home" asp-action="Pets" class="bg-gradient-to-r from-primary-green to-primary-blue px-10 md:px-12 py-4 md:py-5 rounded-full text-white font-semibold hover:from-primary-blue hover:to-primary-green transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 text-lg">
+                    <i class="fas fa-paw mr-3"></i>
+                    Browse Available Pets
+                </a>
+                <a asp-controller="Home" asp-action="AdoptionProcess" class="glass px-10 md:px-12 py-4 md:py-5 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-lg">
+                    <i class="fas fa-info-circle mr-3"></i>
+                    Learn About Adoption
+                </a>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Important Information -->
-        <div class="glass rounded-3xl p-8 md:p-12 mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">
-                Important <span class="gradient-text">Information</span>
+<!-- Newsletter -->
+<section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-dark rounded-3xl p-8 md:p-12 text-center">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary-yellow to-primary-orange rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-envelope text-white text-2xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Get Updates on <span class="gradient-text">Success Stories</span>
             </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Subscribe to receive heartwarming success stories and updates about our adoption program.
+            </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <div class="space-y-6">
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-blue to-primary-purple rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-clock text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Response Time</h3>
-                            <p class="text-gray-300">We'll contact you within 2-3 business days via email or phone.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-green to-primary-blue rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-dollar-sign text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Adoption Fee</h3>
-                            <p class="text-gray-300">Our adoption fee is $150-$300 and includes spaying/neutering, vaccinations, and microchipping.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-pink to-primary-orange rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-home text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Preparation</h3>
-                            <p class="text-gray-300">Start preparing your home with pet supplies: food, bed, toys, and safety measures.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-yellow to-primary-green rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-phone text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Stay in Touch</h3>
-                            <p class="text-gray-300">Feel free to call us at (555) 123-4567 if you have any questions.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-purple to-primary-pink rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-stethoscope text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Health Records</h3>
-                            <p class="text-gray-300">@Model.Name's complete health records and vaccination history will be provided.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full flex items-center justify-center mr-4 mt-1">
-                            <i class="fas fa-heart text-white text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Support</h3>
-                            <p class="text-gray-300">We provide ongoing support and advice for @Model.Name's transition to their new home.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Success Message -->
-        @if (TempData["Success"] != null)
-        {
-            <div class="glass-success rounded-2xl p-6 mb-8">
-                <div class="flex items-center justify-center">
-                    <i class="fas fa-check-circle text-primary-green text-2xl mr-3"></i>
-                    <p class="text-lg text-white font-semibold">@TempData["Success"]</p>
-                </div>
-            </div>
-        }
-
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a asp-controller="Home" asp-action="Pets" class="glass px-8 py-4 rounded-full text-primary-blue font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 sharp-shadow">
-                <i class="fas fa-paw mr-2"></i>
-                Browse Other Pets
-            </a>
-            <a asp-controller="Home" asp-action="Contact" class="glass-dark px-8 py-4 rounded-full text-white font-semibold hover:bg-primary-purple hover:text-white transition-all duration-300 sharp-shadow-pink">
-                <i class="fas fa-envelope mr-2"></i>
-                Contact Us
-            </a>
-            <a asp-controller="Home" asp-action="Index" class="bg-gradient-to-r from-primary-blue to-primary-purple hover:from-primary-purple hover:to-primary-blue px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 sharp-shadow transform hover:scale-105">
-                <i class="fas fa-home mr-2"></i>
-                Back to Home
-            </a>
-        </div>
-
-        <!-- Thank You Message -->
-        <div class="mt-16 text-center">
-            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
-                Thank You for Choosing <span class="gradient-text">CarePet</span>
-            </h3>
-            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-                Your decision to adopt saves a life and makes room for us to help another pet in need. 
-                @Model.Name is lucky to have someone who cares enough to consider adoption!
+            <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 glass px-4 py-3 rounded-full bg-transparent text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-blue border-0">
+                <button type="submit" class="bg-gradient-to-r from-primary-yellow to-primary-orange px-6 py-3 rounded-full text-white font-semibold hover:from-primary-orange hover:to-primary-yellow transition-all duration-300">
+                    Subscribe
+                </button>
+            </form>
+            <p class="text-gray-400 text-sm mt-4">
+                No spam, only heartwarming stories and important updates.
             </p>
         </div>
     </div>
