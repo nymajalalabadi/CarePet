@@ -1,6 +1,9 @@
 @model List<CarePet.Models.Pet>
 @{
     ViewData["Title"] = "Our Pets - Find Your Perfect Companion";
+    ViewData["Description"] = "Browse our adorable rescued pets looking for their forever homes. Dogs, cats, and other animals ready for adoption. Find your perfect companion at CarePet.";
+    ViewData["Keywords"] = "pets for adoption, rescue dogs, rescue cats, adopt a pet, available pets, animal adoption, pet rescue, homeless pets, pet shelter";
+    ViewData["OgImage"] = Context.Request.Scheme + "://" + Context.Request.Host + "/image/pets/pet1.png";
 }
 
 <!-- Header Section -->

@@ -1,6 +1,9 @@
 @model List<CarePet.Models.Testimonial>
 @{
     ViewData["Title"] = "Customer Testimonials";
+    ViewData["Description"] = "Read heartwarming testimonials from happy pet families who found their perfect companions through CarePet. Real stories of successful pet adoptions and care experiences.";
+    ViewData["Keywords"] = "pet adoption testimonials, happy pet families, adoption success stories, pet care reviews, animal shelter testimonials, pet adoption experiences";
+    ViewData["OgImage"] = Context.Request.Scheme + "://" + Context.Request.Host + "/image/pets/pet1.png";
 }
 
 <section class="py-20 px-4 sm:px-6 lg:px-8">

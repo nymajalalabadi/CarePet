@@ -1,0 +1,24 @@
+{
+    "name": "CarePet - Pet Care & Adoption Center",
+    "short_name": "CarePet",
+    "description": "Professional pet care services and pet adoption center. Find your perfect companion and provide the best care for your furry friends.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0F0F23",
+    "theme_color": "#4F46E5",
+    "orientation": "portrait-primary",
+    "categories": ["pets", "care", "adoption", "animals"],
+    "lang": "en",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+} 

@@ -5,6 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CarePet</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="@(ViewData["Description"] ?? "CarePet - Professional pet care services and pet adoption center. Find your perfect companion and provide the best care for your furry friends with our expert veterinary and grooming services.")">
+    <meta name="keywords" content="@(ViewData["Keywords"] ?? "pet adoption, pet care, veterinary services, pet grooming, animal shelter, dog adoption, cat adoption, pet training, pet sitting, animal welfare")">
+    <meta name="author" content="CarePet">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="@(ViewData["CanonicalUrl"] ?? Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path)">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="@ViewData["Title"] - CarePet">
+    <meta property="og:description" content="@(ViewData["Description"] ?? "CarePet - Professional pet care services and pet adoption center. Find your perfect companion and provide the best care for your furry friends.")">
+    <meta property="og:image" content="@(ViewData["OgImage"] ?? Context.Request.Scheme + "://" + Context.Request.Host + "/image/pets/pet1.png")">
+    <meta property="og:url" content="@(Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path)">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CarePet">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@ViewData["Title"] - CarePet">
+    <meta name="twitter:description" content="@(ViewData["Description"] ?? "Professional pet care services and pet adoption center. Find your perfect companion.")">
+    <meta name="twitter:image" content="@(ViewData["OgImage"] ?? Context.Request.Scheme + "://" + Context.Request.Host + "/image/pets/pet1.png")">
+    <meta name="twitter:site" content="@@CarePetOfficial">
+    <meta name="twitter:creator" content="@@CarePetOfficial">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "CarePet",
+        "url": "@(Context.Request.Scheme + "://" + Context.Request.Host)",
+        "logo": "@(Context.Request.Scheme + "://" + Context.Request.Host + "/image/pets/pet1.png")",
+        "description": "Professional pet care services and pet adoption center",
+        "address": {
+            "@@type": "PostalAddress",
+            "streetAddress": "123 Pet Care Street",
+            "addressLocality": "Pet City",
+            "addressRegion": "PC",
+            "postalCode": "12345",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@@type": "ContactPoint",
+            "telephone": "+1-555-PET-CARE",
+            "contactType": "customer service",
+            "areaServed": "US",
+            "availableLanguage": "English"
+        },
+        "sameAs": [
+            "https://facebook.com/CarePetOfficial",
+            "https://twitter.com/CarePetOfficial",
+            "https://instagram.com/CarePetOfficial"
+        ]
+    }
+    </script>
+    
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" />
     

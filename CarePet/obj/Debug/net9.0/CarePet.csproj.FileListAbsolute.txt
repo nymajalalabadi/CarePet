@@ -96,3 +96,6 @@ D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\ref\CarePet.dll
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\CarePet.sourcelink.json
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\3oxq84qpnr-naz4ggpd42.gz
 D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\8w78npzsm1-s7nupen01z.gz
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\ciurn999o2-ylf3stofhg.gz
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\znqqubxtb4-9elk175kt9.gz
+D:\Project\Cursor\CarePet\CarePet\obj\Debug\net9.0\compressed\oo9mieioew-5hjqhpvaaj.gz
